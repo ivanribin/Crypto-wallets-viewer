@@ -1,6 +1,7 @@
-import { TSettingsConfig, SettingsConfigIdList } from "../../pages/Settings/meta";
+import { TSettingsConfig, SettingsConfigIds } from "../../pages/Settings/meta";
 import { IApplicationSliceState } from "../../store/slides/Application/meta";
-import { setTheme, setFontFamily, setFontSize, setCountLoadPosts, setIsCardanoActive, countsLoadPostsNamesList, cardanoStatesNamesList, countsLoadPostsList, cardanoStatesList } from "../../store/slides/Application";
+import { setTheme, setFontFamily, setFontSize, setLoadPostsCount, setIsCardanoActive } from "../../store/slides/Application";
+import { countsLoadPostsList, countsLoadPostsNamesList, cardanoStatesList, cardanoStatesNamesList } from "../../store/slides/Application/meta";
 import { themesList, themesNamesList } from "../../styles/theme";
 import { fontFamiliesList, fontFamiliesNamesList } from "../../styles/fontFamilies";
 import { fontSizesList, fontSizesNamesList } from "../../styles/fontSizes";
@@ -9,35 +10,35 @@ export class SettingsService {
     public static getSettingsConfig(currentApplicationState: IApplicationSliceState): TSettingsConfig {
         const settingsConfig: TSettingsConfig = [
             {
-                id: SettingsConfigIdList.THEME,
+                id: SettingsConfigIds.THEME,
                 valuesNamesList: themesNamesList,
                 valuesList: themesList,
                 selectedValue: currentApplicationState.theme,
                 setValue: setTheme,
             },
             {
-                id: SettingsConfigIdList.FONT_FAMILY,
+                id: SettingsConfigIds.FONT_FAMILY,
                 valuesNamesList: fontFamiliesNamesList,
                 valuesList: fontFamiliesList,
                 selectedValue: currentApplicationState.fontFamily,
                 setValue: setFontFamily,
             },
             {
-                id: SettingsConfigIdList.FONT_SIZE,
+                id: SettingsConfigIds.FONT_SIZE,
                 valuesNamesList: fontSizesNamesList,
                 valuesList: fontSizesList,
                 selectedValue: currentApplicationState.fontSize,
                 setValue: setFontSize,
             },
             {
-                id: SettingsConfigIdList.COUNT_LOAD_POSTS,
+                id: SettingsConfigIds.LOAD_POSTS_COUNT,
                 valuesNamesList: countsLoadPostsNamesList,
                 valuesList: countsLoadPostsList,
-                selectedValue: currentApplicationState.countLoadPosts,
-                setValue: setCountLoadPosts,
+                selectedValue: currentApplicationState.loadPostsCount,
+                setValue: setLoadPostsCount,
             },
             {
-                id: SettingsConfigIdList.IS_CARDANO_ACTIVE,
+                id: SettingsConfigIds.IS_CARDANO_ACTIVE,
                 valuesNamesList: cardanoStatesNamesList,
                 valuesList: cardanoStatesList,
                 selectedValue: currentApplicationState.isCardanoActive,

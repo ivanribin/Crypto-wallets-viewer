@@ -1,65 +1,92 @@
+import LocalStorageService from "../../../services/LocalStorageService";
 import { createSlice, type Slice } from "@reduxjs/toolkit";
-import { defaultTheme } from "../../../styles/theme";
-import { IApplicationSliceState, CountsLoadPosts, TCountLoadPosts } from "./meta";
+import { DEFAULT_THEME } from "../../../styles/theme";
+import { IApplicationSliceState, CountsLoadPosts, countsLoadPostsMap, CardanoStates, cardanoStatesMap } from "./meta";
 import { DEFAULT_FONT_FAMILY } from "../../../styles/fontFamilies";
 import { DEFAULT_FONT_SIZE } from "../../../styles/fontSizes";
+import { SettingsConfigIds, settingsIdList } from "../../../pages/Settings/meta";
 
-export const countsLoadPostsMap: { [key in CountsLoadPosts]: TCountLoadPosts } = {
-    "10": 10,
-    "20": 20,
-    "30": 30,
-};
-
-export const countsLoadPostsNamesList = Object.keys(countsLoadPostsMap);
-export const countsLoadPostsList = Object.values(countsLoadPostsMap);
-
-
-export enum CardanoStates {
-    ACTIVE = "active",
-    INACTIVE = "inactive",
-}
-
-export type TCardanoState = boolean;
-
-export const cardanoStatesMap: { [key in CardanoStates]: TCardanoState} = {
-    "active": true,
-    "inactive": false,
-};
-
-export const cardanoStatesNamesList = Object.keys(cardanoStatesMap);
-export const cardanoStatesList = Object.values(cardanoStatesMap);
-
-const initialState: IApplicationSliceState = {
-    theme: defaultTheme,
+const defaultState: IApplicationSliceState = {
+    theme: DEFAULT_THEME,
     fontFamily: DEFAULT_FONT_FAMILY,
     fontSize: DEFAULT_FONT_SIZE,
-    countLoadPosts: countsLoadPostsMap[CountsLoadPosts.FEW],
+    loadPostsCount: countsLoadPostsMap[CountsLoadPosts.FEW],
     isCardanoActive: cardanoStatesMap[CardanoStates.INACTIVE],
 };
+
+const getSavedApplicationState = (): IApplicationSliceState => {
+    const savedApplicationState: IApplicationSliceState = defaultState;
+    const applicationStateFieldsKeysList = Object.keys(savedApplicationState);
+    
+    settingsIdList.forEach((settingId) => {
+        const settingValue = LocalStorageService.getLocalStorageRecord(settingId);
+
+        if (!settingValue) {
+            return;
+        };
+
+        savedApplicationState["font-family"] = DEFAULT_THEME;
+
+        savedApplicationState[settingId] = settingValue;
+    });
+
+    return savedApplicationState;
+};
+
+const initialState = getSavedApplicationState();
 
 const ApplicationSlice: Slice<IApplicationSliceState> = createSlice({
     name: "Application Slice",
     initialState,
     reducers: {
         setTheme: (state, action) => {
-            state.theme = action.payload;
+            const newTheme = action.payload;
+
+            state.theme = newTheme;
+            LocalStorageService.setLocalStorageRecord(SettingsConfigIds.THEME, newTheme);
         },
         setFontFamily: (state, action) => {
-            state.fontFamily = action.payload;
+            const newFontFamily = action.payload;
+
+            state.fontFamily = newFontFamily;
+            LocalStorageService.setLocalStorageRecord(SettingsConfigIds.FONT_FAMILY, newFontFamily);
         },
         setFontSize: (state, action) => {
-            state.fontSize = action.payload;
+            const newFontSize = action.payload;
+
+            state.fontSize = newFontSize;
+            LocalStorageService.setLocalStorageRecord(SettingsConfigIds.FONT_SIZE, newFontSize);
         },
-        setCountLoadPosts: (state, action) => {
-            state.countLoadPosts = action.payload;
+        setLoadPostsCount: (state, action) => {
+            const newLoadPostsCount = action.payload;
+
+            state.loadPostsCount = newLoadPostsCount;
+            LocalStorageService.setLocalStorageRecord(SettingsConfigIds.LOAD_POSTS_COUNT, newLoadPostsCount)
         },
         setIsCardanoActive: (state, action) => {
-            state.isCardanoActive = action.payload;
+            const newCardanoStatus = action.payload;
+
+            state.isCardanoActive = newCardanoStatus;
+            LocalStorageService.setLocalStorageRecord(SettingsConfigIds.IS_CARDANO_ACTIVE, newCardanoStatus);
         }
     },
 });
 
-export const { setTheme, setFontFamily, setFontSize, setCountLoadPosts, setIsCardanoActive } = ApplicationSlice.actions;
+export const { setTheme, setFontFamily, setFontSize, setLoadPostsCount, setIsCardanoActive } = ApplicationSlice.actions;
 
 export default ApplicationSlice.reducer;
+
+
+const exampleObject = {
+    id: 1,
+    value: 1000,
+}
+
+const fieldsKeysList = Object.keys(exampleObject) as (keyof typeof exampleObject)[];
+
+fieldsKeysList.forEach((key) => {
+    exampleObject[key] = 5;
+})
+
+
 

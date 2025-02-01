@@ -44,6 +44,6 @@ export const themesMap: { [key in ThemesNames]: ITheme } = {
 export const themesNamesList = Object.keys(themesMap);
 export const themesList = Object.values(themesMap);
 
-export const DEFAULT_COLOR_THEME_NAME = ThemesNames.DARK;
+export const DEFAULT_THEME_NAME = ThemesNames.DARK;
 
-export const defaultTheme: ITheme = themesMap[DEFAULT_COLOR_THEME_NAME];
+export const DEFAULT_THEME: ITheme = themesMap[DEFAULT_THEME_NAME];
