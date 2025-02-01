@@ -1,7 +1,7 @@
 import { RouteObject } from "react-router-dom";
-import PostsPage from "../pages/Posts";
-import SettingsPage from "../pages/Settings";
-import WalletsPage from "../pages/Wallets";
+import PostsPage from "../pages/PostsPage";
+import SettingsPage from "../pages/SettingsPage";
+import WalletsPage from "../pages/WalletsPage";
 
 export const enum BasePaths {
     POSTS = "/",
