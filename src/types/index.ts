@@ -5,6 +5,8 @@ export interface IPost {
     body: string;
 }
 
+export type TPostsInfo = string[];
+
 export type TPosts = IPost[];
 
 export interface IPaginatorItem {

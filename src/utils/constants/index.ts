@@ -33,7 +33,7 @@ export const getTotalPageCount = (list: any[], pageItemsCount: number): number =
 }
 
 export const getListShowPath = (list: any[], currentNumber: number) => {
-    const firstIndex: number = currentNumber * (PAGE_POSTS_COUNT - 1);
+    const firstIndex: number = ( currentNumber - 1 ) * (PAGE_POSTS_COUNT);
 
     return list.slice(firstIndex, firstIndex + PAGE_POSTS_COUNT);
 }
