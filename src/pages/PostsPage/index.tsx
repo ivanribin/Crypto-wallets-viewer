@@ -1,22 +1,15 @@
-import { useEffect, useState, type ReactElement } from "react";
+import Paginator from "../../components/Paginator";
+import { useEffect, useMemo, useState, type ReactElement } from "react";
 import { TPosts } from "../../types";
 import { getPosts } from "../../api";
-import usePaginationObserver from "../../hooks/usePaginationObserver";
-import Paginator from "../../components/Paginator";
+import { DEFAULT_PAGE_NUMBER, getListShowPath, getTotalPageCount, PAGE_POSTS_COUNT } from "../../utils/constants";
 import "./style.css";
 
 const PostsPage = (): ReactElement => {
     const [postsList, setPostsList] = useState<TPosts | null>(null);
+    const [currentNumber, setPageNumber] = useState<number>(DEFAULT_PAGE_NUMBER);
     const [arePostsLoading, setArePostsLoading] = useState<boolean>(false);
     const [error, setError] = useState<any>(null);
-
-    const {
-        showList,
-        setPreviousPage,
-        setNextPage,
-        paginatorDisable,
-        navigationState,
-    } = usePaginationObserver(postsList);
 
     const loadPosts = async () => {
         try {
@@ -45,19 +38,21 @@ const PostsPage = (): ReactElement => {
         return <h2>LOADING POSTS...</h2>;
     }
 
-    if ((!arePostsLoading && !postsList?.length) || error) {
+    if ((!arePostsLoading && !postsList?.length) || !postsList || error) {
         return <h2>Unable to load posts {error?.message}</h2>;
-    }
+    };
+
+    const listShowPath: TPosts = getListShowPath(postsList, currentNumber);
+    const totalPageNumber: number = getTotalPageCount(postsList, PAGE_POSTS_COUNT);
 
     return (
         <div className="posts-page main-container">
-            <div>{JSON.stringify(showList)}</div>
+            <div>{JSON.stringify(listShowPath)}</div>
 
             <Paginator
-                onPreviousPageClick={setPreviousPage}
-                onNextPageClick={setNextPage}
-                disable={paginatorDisable}
-                navigationState={navigationState}
+                currentNumber={currentNumber}
+                totalPageNumber={totalPageNumber}
+                changePageNumber={setPageNumber}
             />
         </div>
     );

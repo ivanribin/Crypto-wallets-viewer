@@ -7,10 +7,18 @@ export interface IPost {
 
 export type TPosts = IPost[];
 
-export interface IDisable {
-    previousPageButton: boolean;
-    nextPageButton: boolean;
-};
+export interface IPaginatorItem {
+    info: string,
+    isButton: boolean;
+    selectClass?: string;
+}
+
+export type TPaginatorItemsList = IPaginatorItem[];
+
+export interface IButtonsDisable {
+    previousPage: boolean;
+    nexPage: boolean;
+}
 
 export interface INavigationState {
     currentPageNumber: number;
