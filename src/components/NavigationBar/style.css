@@ -1,0 +1,12 @@
+.navigation-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.navigation-item.active a{
+    font-size: 20px;
+    color: blue;
+}

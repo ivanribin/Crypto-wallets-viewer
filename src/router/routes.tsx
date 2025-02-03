@@ -3,7 +3,13 @@ import PostsPage from "../pages/Posts";
 import SettingsPage from "../pages/Settings";
 import WalletsPage from "../pages/Wallets";
 
-export const enum BasePaths {
+export enum PagesIds {
+    POSTS = "posts",
+    WALLETS = "wallets",
+    SETTINGS = "settings",
+}
+
+export enum BasePaths {
     POSTS = "/",
     WALLETS = "/wallets",
     SETTINGS = "/settings",
