@@ -1,20 +1,20 @@
 import { useLocation } from "react-router";
-import { BasePaths, PagesIds } from "../../router/routes";
-import { INavigationItem } from "../../types";
+import { BasePaths, PathsTitles } from "../../router/routes";
+import { INavigationItem } from "./meta";
 
 const useNavigation = () => {
     const location = useLocation();
 
-    const pathsList = Object.values(BasePaths);
-    const pagesIdsList = Object.values(PagesIds);
+    const pathsLinksList = Object.values(BasePaths);
+    const pathsTitlesList = Object.values(PathsTitles);
 
-    const currentPagePath = location.pathname;
+    const currentPagePathLink = location.pathname;
 
-    const navigationItems: INavigationItem[] = pagesIdsList.map((pageId, index) => {
+    const navigationItems: INavigationItem[] = pathsTitlesList.map((pathTitle, index) => {
         const navigationItem: INavigationItem = {
-            name: pageId,
-            path: pathsList[index],
-            isCurrent: pathsList[index] === currentPagePath,
+            name: pathTitle,
+            path: pathsLinksList[index],
+            isCurrent: pathsLinksList[index] === currentPagePathLink,
         };
 
         return navigationItem;

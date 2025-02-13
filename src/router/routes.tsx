@@ -3,7 +3,7 @@ import PostsPage from "../pages/Posts";
 import SettingsPage from "../pages/Settings";
 import WalletsPage from "../pages/Wallets";
 
-export enum PagesIds {
+export enum PathsTitles {
     POSTS = "posts",
     WALLETS = "wallets",
     SETTINGS = "settings",
@@ -17,17 +17,17 @@ export enum BasePaths {
 
 const applicationRoutes: RouteObject[] =[
     {
-        id: "posts",
+        id: PathsTitles.POSTS,
         path: BasePaths.POSTS,
         element: <PostsPage />
     },
     {
-        id: "wallets",
+        id: PathsTitles.WALLETS,
         path: BasePaths.WALLETS,
         element: <WalletsPage />
     },
     {
-        id: "settings",
+        id: PathsTitles.SETTINGS,
         path: BasePaths.SETTINGS,
         element: <SettingsPage />
     },
