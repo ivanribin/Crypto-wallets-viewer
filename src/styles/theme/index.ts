@@ -1,5 +1,5 @@
 import { ColorPalette } from "../colorPalette";
-import { ITheme, ThemesNames  } from "./meta";
+import { ITheme, ThemesKeys  } from "./meta";
 
 export const lightTheme: ITheme = {
     text: ColorPalette.DRYADBARK,
@@ -23,7 +23,7 @@ export const darkTheme: ITheme = {
     dangerBackground: ColorPalette.TRANSLUCENT_UNICORN,
 };
 
-export const pirpleTheme: ITheme = {
+export const purpleTheme: ITheme = {
     text: ColorPalette.WHITE,
     background: ColorPalette.DARK_VIOLET,
     componentBackground: ColorPalette.LIGHT_VIOLET,
@@ -34,16 +34,14 @@ export const pirpleTheme: ITheme = {
     dangerBackground: ColorPalette.TRANSLUCENT_UNICORN,
 };
 
-
-export const themesMap: { [key in ThemesNames]: ITheme } = {
+export const themesMap: { [key in ThemesKeys]: ITheme } = {
     "dark": darkTheme,
     "light": lightTheme,
-    "pirple": pirpleTheme,
+    "purple": purpleTheme,
 };
 
-export const themesNamesList = Object.keys(themesMap);
-export const themesList = Object.values(themesMap);
+export const themesKeysList = Object.keys(themesMap);
 
-export const DEFAULT_THEME_NAME = ThemesNames.DARK;
+export const DEFAULT_THEME_NAME = ThemesKeys.DARK;
 
-export const DEFAULT_THEME: ITheme = themesMap[DEFAULT_THEME_NAME];
+// export const DEFAULT_THEME: ITheme = themesMap[DEFAULT_THEME_NAME];

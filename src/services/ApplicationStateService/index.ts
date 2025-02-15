@@ -1,10 +1,22 @@
-import { IApplicationSliceState } from "../../store/slides/Application/meta";
+import { IApplicationSliceState } from "../../store/slices/Application/meta";
+import { FontFamiliesKeys, fontFamiliesMap } from "../../styles/fontFamilies";
+import { FontSizesKeys, fontSizesMap } from "../../styles/fontSizes";
+import { themesMap } from "../../styles/theme";
+import { ITheme, ThemesKeys } from "../../styles/theme/meta";
 
 export class ApplicationStateService {
     public static updateApplicationState(selectedApplicationState: IApplicationSliceState, applicationBody: HTMLElement): void {
-        const selectedTheme = selectedApplicationState.theme;
-        const selectedFontFamily = selectedApplicationState.fontFamily;
-        const selectedFontSize = selectedApplicationState.fontSize;
+        const selectedThemeName = selectedApplicationState.theme as ThemesKeys;
+        const selectedFontFamilyName = selectedApplicationState.fontFamily as FontFamiliesKeys;
+        const selectedFontSizeName = selectedApplicationState.fontSize as FontSizesKeys;
+
+        if (!(selectedThemeName in themesMap) || !(selectedFontFamilyName in fontFamiliesMap) || !(selectedFontSizeName in fontSizesMap)) {
+            throw new Error("Cannot update application state, some selected key is uncorrect");
+        }
+
+        const selectedTheme: ITheme = themesMap[selectedThemeName];
+        const selectedFontFamily = fontFamiliesMap[selectedFontFamilyName];
+        const selectedFontSize = fontSizesMap[selectedFontSizeName];
 
         applicationBody.style.color = selectedTheme.text;
         applicationBody.style.backgroundColor = selectedTheme.background;

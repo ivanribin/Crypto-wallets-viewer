@@ -3,7 +3,7 @@ import { type ReactElement } from "react";
 import { useSelector } from "react-redux";
 import { TRootState } from "../../store";
 import { ApplicationStateService } from "../../services/ApplicationStateService";
-import { IApplicationSliceState } from "../../store/slides/Application/meta";
+import { IApplicationSliceState } from "../../store/slices/Application/meta";
 import "./style.css";
 
 const Application = (): ReactElement => {
@@ -11,7 +11,7 @@ const Application = (): ReactElement => {
         (state: TRootState) => state.application
     );
 
-    console.log(currentApplicationState);
+    // console.log(currentApplicationState);
 
     ApplicationStateService.updateApplicationState(currentApplicationState, document.body);
 

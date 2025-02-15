@@ -2,7 +2,7 @@ import { useState, type ReactElement } from "react";
 import "./style.css";
 import { TRootState } from "../../store";
 import { useSelector } from "react-redux";
-import { IApplicationSliceState } from "../../store/slides/Application/meta";
+import { IApplicationSliceState } from "../../store/slices/Application/meta";
 import { TSettingsConfig } from "./meta";
 import { SettingsService } from "../../services/SettingsService";
 import SettingsFieldMenu from "../../components/SettingsFieldMenu";
