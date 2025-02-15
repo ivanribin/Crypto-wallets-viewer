@@ -10,19 +10,17 @@ export interface ISettingsFieldMenuProps {
 const SettingsFieldMenu = ({
     settingsFieldConfig,
 }: ISettingsFieldMenuProps): ReactElement => {
-    const valuesList = settingsFieldConfig.valuesList;
-    const valuesNamesList = settingsFieldConfig.valuesNamesList;
-    const selectedValue = settingsFieldConfig.selectedValue;
+    const keysList = settingsFieldConfig.keysList;
+    const selectedKey = settingsFieldConfig.selectedKey;
     const setValue = settingsFieldConfig.setValue;
 
     return (
         <div className="settings-field-container">
-            {valuesList.map((value, index) => (
+            {keysList.map((key, index) => (
                 <SettingsFieldButton
-                    key={valuesNamesList[index]}
-                    selectedValue={selectedValue}
-                    valueName={valuesNamesList[index]}
-                    value={value}
+                    key={key}
+                    selectedKey={selectedKey}
+                    value={key}
                     setValue={setValue}
                 />
             ))}

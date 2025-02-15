@@ -1,22 +1,21 @@
 import LocalStorageService from "../../../services/LocalStorageService";
 import { createSlice, type Slice } from "@reduxjs/toolkit";
-import { DEFAULT_THEME } from "../../../styles/theme";
-import { IApplicationSliceState, CountsLoadPosts, countsLoadPostsMap, CardanoStates, cardanoStatesMap } from "./meta";
+import { DEFAULT_THEME_NAME } from "../../../styles/theme";
+import { IApplicationSliceState, CountsLoadPostsKeys, CardanoStatesKeys } from "./meta";
 import { DEFAULT_FONT_FAMILY } from "../../../styles/fontFamilies";
 import { DEFAULT_FONT_SIZE } from "../../../styles/fontSizes";
-import { SettingsConfigIds, settingsIdList } from "../../../pages/Settings/meta";
+import { SettingsConfigKeys, settingsIdList } from "../../../pages/Settings/meta";
 
 const defaultState: IApplicationSliceState = {
-    theme: DEFAULT_THEME,
+    theme: DEFAULT_THEME_NAME,
     fontFamily: DEFAULT_FONT_FAMILY,
     fontSize: DEFAULT_FONT_SIZE,
-    loadPostsCount: countsLoadPostsMap[CountsLoadPosts.FEW],
-    isCardanoActive: cardanoStatesMap[CardanoStates.INACTIVE],
+    loadPostsCount: CountsLoadPostsKeys.FEW,
+    isCardanoActive: CardanoStatesKeys.INACTIVE,
 };
 
 const getSavedApplicationState = (): IApplicationSliceState => {
     const savedApplicationState: IApplicationSliceState = defaultState;
-    const applicationStateFieldsKeysList = Object.keys(savedApplicationState);
     
     settingsIdList.forEach((settingId) => {
         const settingValue = LocalStorageService.getLocalStorageRecord(settingId);
@@ -24,8 +23,6 @@ const getSavedApplicationState = (): IApplicationSliceState => {
         if (!settingValue) {
             return;
         };
-
-        savedApplicationState["font-family"] = DEFAULT_THEME;
 
         savedApplicationState[settingId] = settingValue;
     });
@@ -43,31 +40,31 @@ const ApplicationSlice: Slice<IApplicationSliceState> = createSlice({
             const newTheme = action.payload;
 
             state.theme = newTheme;
-            LocalStorageService.setLocalStorageRecord(SettingsConfigIds.THEME, newTheme);
+            LocalStorageService.setLocalStorageRecord(SettingsConfigKeys.THEME, newTheme);
         },
         setFontFamily: (state, action) => {
             const newFontFamily = action.payload;
 
             state.fontFamily = newFontFamily;
-            LocalStorageService.setLocalStorageRecord(SettingsConfigIds.FONT_FAMILY, newFontFamily);
+            LocalStorageService.setLocalStorageRecord(SettingsConfigKeys.FONT_FAMILY, newFontFamily);
         },
         setFontSize: (state, action) => {
             const newFontSize = action.payload;
 
             state.fontSize = newFontSize;
-            LocalStorageService.setLocalStorageRecord(SettingsConfigIds.FONT_SIZE, newFontSize);
+            LocalStorageService.setLocalStorageRecord(SettingsConfigKeys.FONT_SIZE, newFontSize);
         },
         setLoadPostsCount: (state, action) => {
             const newLoadPostsCount = action.payload;
 
             state.loadPostsCount = newLoadPostsCount;
-            LocalStorageService.setLocalStorageRecord(SettingsConfigIds.LOAD_POSTS_COUNT, newLoadPostsCount)
+            LocalStorageService.setLocalStorageRecord(SettingsConfigKeys.LOAD_POSTS_COUNT, newLoadPostsCount)
         },
         setIsCardanoActive: (state, action) => {
             const newCardanoStatus = action.payload;
 
             state.isCardanoActive = newCardanoStatus;
-            LocalStorageService.setLocalStorageRecord(SettingsConfigIds.IS_CARDANO_ACTIVE, newCardanoStatus);
+            LocalStorageService.setLocalStorageRecord(SettingsConfigKeys.IS_CARDANO_ACTIVE, newCardanoStatus);
         }
     },
 });
@@ -75,18 +72,6 @@ const ApplicationSlice: Slice<IApplicationSliceState> = createSlice({
 export const { setTheme, setFontFamily, setFontSize, setLoadPostsCount, setIsCardanoActive } = ApplicationSlice.actions;
 
 export default ApplicationSlice.reducer;
-
-
-const exampleObject = {
-    id: 1,
-    value: 1000,
-}
-
-const fieldsKeysList = Object.keys(exampleObject) as (keyof typeof exampleObject)[];
-
-fieldsKeysList.forEach((key) => {
-    exampleObject[key] = 5;
-})
 
 
 

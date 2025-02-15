@@ -4,22 +4,20 @@ import { SettingsFieldButtonStyles } from "./meta";
 import "./style.css";
 
 export interface ISettingsFieldButtonProps {
-    selectedValue: any;
-    valueName: string;
+    selectedKey: string;
     value: string;
     setValue: any;
 }
 
 const SettingsFieldButton = ({
-    selectedValue,
-    valueName,
+    selectedKey,
     value,
     setValue,
 }: ISettingsFieldButtonProps): ReactElement => {
     const dispatch = useDispatch();
 
     const buttonStyle: string =
-        selectedValue === value
+        selectedKey === value
             ? SettingsFieldButtonStyles.SELECT
             : SettingsFieldButtonStyles.UNSELECT;
 
@@ -30,7 +28,7 @@ const SettingsFieldButton = ({
                 dispatch(setValue(value));
             }}
         >
-            {valueName}
+            {value}
         </button>
     );
 };

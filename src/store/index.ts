@@ -1,4 +1,4 @@
-import ApplicationSlice from "./slides/Application";
+import ApplicationSlice from "./slices/Application";
 import { configureStore } from "@reduxjs/toolkit";
 
 const store = configureStore({
