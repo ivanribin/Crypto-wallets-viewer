@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .main-container {
     display: flex;
     flex-direction: column;
@@ -5,3 +6,24 @@
     align-items: start;
     gap: 20px;
 }
+=======
+/* :root[data-theme="light"] {
+    --background-color: #f6f6f9;
+    --text-color: #37352f;
+}
+
+:root[data-theme="dark"] {
+    --background-color: #141519;
+    --text-color: #ffffff;
+}
+
+:root[data-theme="purple"] {
+    --background-color: #6a0dad;
+    --text-color: #ffffff;
+} */
+/* 
+body {
+    background: var(--background-color);
+    color: var(--text-color);
+} */
+>>>>>>> settings-page

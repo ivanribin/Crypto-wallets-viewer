@@ -1,0 +1,4 @@
+.select {
+    user-select: none;
+    transform: scale(1.2);
+}
