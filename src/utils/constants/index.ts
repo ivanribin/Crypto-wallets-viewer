@@ -1,4 +1,6 @@
 import { IPaginatorItem, TPaginatorItemsList } from "../../types";
+import { Address } from "@emurgo/cardano-serialization-lib-asmjs";
+import { Buffer } from "buffer";
 
 export const enum PaginatorFieldsTexts {
     PREVIOUS_PAGE_SYMBOL = "<",
@@ -20,6 +22,12 @@ export const PAGINATOR_SOME_PAGES_SYMBOL_ITEM: IPaginatorItem = {
     isButton: false,
 }
 
+export const enum WalletConnectMessages {
+    NOT_FIND_EXTENSION = "Can not find an extension: ",
+    PROPERLY_CONNECT_WARNING = ": Please make sure you have your extension connected properly",
+    CONNECT_ERROR = "Error on connectWallet: ",
+}
+
 export const getPaginatorButtonSelectClass = (isSelect: boolean): string => {
     return isSelect ? PaginatorButtonSelectClasses.SELECT : PaginatorButtonSelectClasses.UNSELECT;
 }
@@ -33,7 +41,7 @@ export const getTotalPageCount = (list: any[], pageItemsCount: number): number =
 }
 
 export const getListShowPath = (list: any[], currentNumber: number) => {
-    const firstIndex: number = ( currentNumber - 1 ) * (PAGE_POSTS_COUNT);
+    const firstIndex: number = (currentNumber - 1) * (PAGE_POSTS_COUNT);
 
     return list.slice(firstIndex, firstIndex + PAGE_POSTS_COUNT);
 }
@@ -104,4 +112,8 @@ export const getPaginatorButtonsNamesList = (currentNumber: number, totalPageNum
     }
 
     return [];
+};
+
+export const decodeAddress = (address: string) => {
+    return Address.from_bytes(Buffer.from(address, "hex")).to_bech32();
 };
