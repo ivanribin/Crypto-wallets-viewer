@@ -1,0 +1,33 @@
+.paginator {
+    position: relative;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.paginator-arrow {
+    font-size: 60px;
+}
+
+.paginator-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.paginator-items .paginator-button.unselect{
+    font-size: 60px;
+}
+
+.paginator-items .paginator-button.select{
+    font-size: 80px;
+}
+
+.paginator-items div{
+    font-size: 60px;
+}
