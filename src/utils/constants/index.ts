@@ -1,6 +1,14 @@
-import { IPaginatorItem, TPaginatorItemsList } from "../../types";
 import { Address } from "@emurgo/cardano-serialization-lib-asmjs";
 import { Buffer } from "buffer";
+
+
+export interface IPaginatorItem {
+    info: string,
+    isButton: boolean;
+    selectClass?: string;
+}
+
+export type TPaginatorItemsList = IPaginatorItem[];
 
 export const enum PaginatorFieldsTexts {
     PREVIOUS_PAGE_SYMBOL = "<",
@@ -14,7 +22,6 @@ export const enum PaginatorButtonSelectClasses {
 }
 
 export const DEFAULT_PAGE_NUMBER: number = 1;
-export const PAGE_POSTS_COUNT: number = 10;
 
 export const PAGINATOR_SIBLING_COUNT: number = 0;
 export const PAGINATOR_SOME_PAGES_SYMBOL_ITEM: IPaginatorItem = {
@@ -40,10 +47,10 @@ export const getTotalPageCount = (list: any[], pageItemsCount: number): number =
     return Math.ceil(list.length / pageItemsCount);
 }
 
-export const getListShowPath = (list: any[], currentNumber: number) => {
-    const firstIndex: number = (currentNumber - 1) * (PAGE_POSTS_COUNT);
+export const getListShowPath = (list: any[], currentNumber: number, countElements: number) => {
+    const firstIndex: number = (currentNumber - 1) * (countElements);
 
-    return list.slice(firstIndex, firstIndex + PAGE_POSTS_COUNT);
+    return list.slice(firstIndex, firstIndex + countElements);
 }
 
 const getPaginatorButtonsListByPageNumbers = (firstNumber: number, lastNumber: number, currentNumber: number): TPaginatorItemsList => {

@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { IPost } from "../../types";
+import { IPost } from "./meta";
 import "./style.css";
 
 export interface IPostProps {

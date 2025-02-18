@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
-import { TPosts } from "../../types";
-import "./style.css";
+import { TPosts } from "./meta";
 import Post from "../Post";
+import "./style.css";
 
 export interface IPostsProps {
     postsList: TPosts;

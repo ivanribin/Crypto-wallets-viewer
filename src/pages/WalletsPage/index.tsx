@@ -6,16 +6,23 @@ import {
     cardanoWalletChapterTexts,
     ethereumWalletChapterTexts,
 } from "./meta";
-
-export const IS_CARDANO_ACTIVE: boolean = true;
+import { useSelector } from "react-redux";
+import { TRootState } from "../../store";
+import { CardanoStatesKeys, cardanoStatesMap } from "../../store/slices/Application/meta";
+import "./style.css";
 
 const WalletsPage = (): ReactElement => {
+    //TODO create service, that return value in application state map by key in redux
+    const isCardanoActiveKey = useSelector((state: TRootState) => state.application.isCardanoActive) as CardanoStatesKeys;
+    const isCardanoActive = cardanoStatesMap[isCardanoActiveKey];
+
     const { ethereumAccountAddress, setEthereumAccountAddress, connectEthereumWallet } = useEthereumHook();
     const { cardanoMaskAccountAddress, setCardanoMaskAccountAddress, connectCardanoWallet } =
         useCardanoHook();
 
     return (
         <div>
+            {/* //TODO Use hooks in WalletsPageChapter component because decrease props count and make code cleaner */}
             <WalletsPageChapter
                 connectFunction={connectEthereumWallet}
                 textData={ethereumWalletChapterTexts}
@@ -23,7 +30,7 @@ const WalletsPage = (): ReactElement => {
                 changeWalletAddress={setEthereumAccountAddress}
             />
 
-            {!IS_CARDANO_ACTIVE ? (
+            {!isCardanoActive ? (
                 <></>
             ) : (
                 <WalletsPageChapter

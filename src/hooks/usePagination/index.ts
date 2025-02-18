@@ -1,6 +1,6 @@
 import { useMemo } from "react";
-import { IButtonsDisable, INavigationState, TPaginatorItemsList } from "../../types";
-import { getPaginatorButtonsNamesList } from "../../utils/constants";
+import { getPaginatorButtonsNamesList, TPaginatorItemsList } from "../../utils/constants";
+import { IButtonsDisable } from "./meta";
 
 const usePagination = (currentNumber: number, totalPageNumber: number) => {
     const paginatorInfo = useMemo(() => {
@@ -9,15 +9,10 @@ const usePagination = (currentNumber: number, totalPageNumber: number) => {
             previousPage: currentNumber === 1,
             nexPage: currentNumber === totalPageNumber,
         }
-        const navigationState: INavigationState = {
-            currentPageNumber: currentNumber,
-            totalPageNumber: totalPageNumber
-        }
 
         return {
             paginatorItemsList,
             buttonsDisable,
-            navigationState
         }
     }, [currentNumber, totalPageNumber])
 

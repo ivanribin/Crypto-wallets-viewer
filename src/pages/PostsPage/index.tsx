@@ -3,17 +3,23 @@ import Posts from "../../components/Posts";
 import Search from "../../components/Search";
 import useListFilter from "../../hooks/useListFilter";
 import { useEffect, useState, type ReactElement } from "react";
-import { TPosts } from "../../types";
+import { TPosts } from "../../components/Posts/meta";
 import { getPosts } from "../../api";
 import {
     DEFAULT_PAGE_NUMBER,
     getListShowPath,
     getTotalPageCount,
-    PAGE_POSTS_COUNT,
 } from "../../utils/constants";
+import { useSelector } from "react-redux";
+import { TRootState } from "../../store";
+import { CountsLoadPostsKeys, countsLoadPostsMap } from "../../store/slices/Application/meta";
 import "./style.css";
 
 const PostsPage = (): ReactElement => {
+    //TODO create service, that return value in application state map by key in redux
+    const loadPostsCountKey = useSelector((state: TRootState) => state.application.loadPostsCount) as CountsLoadPostsKeys;
+    const loadPostsCount = countsLoadPostsMap[loadPostsCountKey];
+
     const [postsList, setPostsList] = useState<TPosts>([]);
     const [currentNumber, setPageNumber] =
         useState<number>(DEFAULT_PAGE_NUMBER);
@@ -59,10 +65,10 @@ const PostsPage = (): ReactElement => {
         return <h2>Unable to load posts {error?.message}</h2>;
     }
 
-    const listShowPath: TPosts = getListShowPath(filteredList, currentNumber);
+    const listShowPath: TPosts = getListShowPath(filteredList, currentNumber, loadPostsCount);
     const totalPageNumber: number = getTotalPageCount(
         filteredList,
-        PAGE_POSTS_COUNT
+        loadPostsCount,
     );
 
     return (
