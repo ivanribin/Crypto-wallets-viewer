@@ -1,0 +1,21 @@
+.navigation-bar.default {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.navigation-item.active a{
+    font-size: 20px;
+    color: blue;
+}
+
+.burger-menu.navigation-items.inactive {
+    display: none;
+}
+
+.burger-menu.navigation-items.active {
+    display: block;
+}
+

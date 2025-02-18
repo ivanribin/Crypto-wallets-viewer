@@ -1,3 +1,5 @@
+import NavigationBar from "../components/NavigationBar";
+import applicationRoutes from "./routes";
 import { type ReactElement } from "react";
 import {
     Route,
@@ -5,10 +7,11 @@ import {
     BrowserRouter as Router,
     type RouteObject,
 } from "react-router-dom";
-import applicationRoutes from "./routes";
 
 const ApplicationRouter = (): ReactElement => (
     <Router>
+        <NavigationBar />
+
         <Routes>
             {applicationRoutes.map((route: RouteObject) => (
                 <Route
