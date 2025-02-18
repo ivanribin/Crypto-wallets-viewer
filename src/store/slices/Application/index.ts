@@ -4,7 +4,7 @@ import { DEFAULT_THEME_NAME } from "../../../styles/theme";
 import { IApplicationSliceState, CountsLoadPostsKeys, CardanoStatesKeys } from "./meta";
 import { DEFAULT_FONT_FAMILY } from "../../../styles/fontFamilies";
 import { DEFAULT_FONT_SIZE } from "../../../styles/fontSizes";
-import { SettingsConfigKeys, settingsIdList } from "../../../pages/Settings/meta";
+import { SettingsConfigKeys, settingsIdList } from "../../../pages/SettingsPage/meta";
 
 const defaultState: IApplicationSliceState = {
     theme: DEFAULT_THEME_NAME,

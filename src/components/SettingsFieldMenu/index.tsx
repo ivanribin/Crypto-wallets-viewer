@@ -1,6 +1,6 @@
 import { type ReactElement } from "react";
 import SettingsFieldButton from "../SettingsFieldButton";
-import { ISettingsConfigItem } from "../../pages/Settings/meta";
+import { ISettingsConfigItem } from "../../pages/SettingsPage/meta";
 import "./style.css";
 
 export interface ISettingsFieldMenuProps {
