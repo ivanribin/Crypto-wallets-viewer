@@ -16,7 +16,4 @@ export const fontFamiliesValuesMap: { [key in FontFamiliesKeys]: string } = {
     "courier new": "courier-new",
 };
 
-// export const fontFamiliesKeysList = Object.keys(fontFamiliesMap);
-// export const fontFamiliesValuesList = Object.values(fontFamiliesMap);
-
 export const DEFAULT_FONT_FAMILY = FontFamiliesKeys.ARIAL;
