@@ -1,0 +1,127 @@
+:root {
+    --primary-fill-color: #FFFFFF;
+    --primary-background-color: #F4F4F4;
+    --secondary-background-color: #EBF1E7;
+    --inactive-background-color: #BAC2BB;
+    --secondary-fill-color: #727173;
+    --primary-font-color: #111213;
+    --accent-passive-color: #446E61;
+    --accent-active-color: #67446E;
+    --default-shadow-color: rgba(23, 28, 23, 0.58);
+
+    --default-shadow: 0 0 4px 0 var(--default-shadow-color);
+
+    --navbar-height: 75px;
+    --content-padding: 16px;
+    --content-radius-primary: 18px;
+    --content-radius-secondary: 8px;
+    --content-width-desktop: 1100px
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-color: var(--secondary-background-color);
+}
+
+h1 {
+    color: var(--primary-font-color);
+}
+
+h2 {
+    color: var(--primary-font-color);
+}
+
+h3 {
+    color: var(--primary-font-color);
+}
+
+h4 {
+    color: var(--primary-font-color);
+}
+
+h5 {
+    color: var(--primary-font-color);
+}
+
+.common-text {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0%;
+
+    color: var(--primary-font-color);
+}
+
+.common-text-small {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 24px;
+    letter-spacing: 0%;
+
+    color: var(--primary-font-color);
+}
+
+.common-text-inactive {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 23px;
+    letter-spacing: 0%;
+
+    color: #678259;
+}
+
+.primary-text {
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 40px;
+    letter-spacing: 0%;
+
+    color: var(--accent-active-color);
+}
+
+.primary-text-small {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 16px;
+    letter-spacing: -0.5%;
+
+    color: var(--accent-active-color);
+}
+
+.control-text {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 16px;
+    letter-spacing: -0.5%;
+
+    color: var(--primary-font-color);
+}
+
+.footnote-text {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+    letter-spacing: 0%;
+
+    color: var(--primary-font-color);
+}
+
+.dummy-text {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: 0%;
+
+    color: var(--inactive-background-color);
+}
