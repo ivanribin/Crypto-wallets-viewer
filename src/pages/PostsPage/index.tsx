@@ -12,13 +12,13 @@ import {
 } from "../../utils/constants";
 import { useSelector } from "react-redux";
 import { TRootState } from "../../store";
-import { CountsLoadPostsKeys, countsLoadPostsMap } from "../../store/slices/Application/meta";
+import { CountsLoadPostsKeys, countsLoadPostsValuesMap  } from "../../store/slices/Application/meta";
 import "./style.css";
 
 const PostsPage = (): ReactElement => {
     //TODO create service, that return value in application state map by key in redux
     const loadPostsCountKey = useSelector((state: TRootState) => state.application.loadPostsCount) as CountsLoadPostsKeys;
-    const loadPostsCount = countsLoadPostsMap[loadPostsCountKey];
+    const loadPostsCount = countsLoadPostsValuesMap[loadPostsCountKey];
 
     const [postsList, setPostsList] = useState<TPosts>([]);
     const [currentNumber, setPageNumber] =

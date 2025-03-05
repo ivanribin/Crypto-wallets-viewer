@@ -1,15 +1,3 @@
-import { fontFamiliesMap } from "../../../styles/fontFamilies";
-import { fontSizesMap } from "../../../styles/fontSizes";
-import { themesMap } from "../../../styles/theme";
-
-// export interface IApplicationSliceState {
-//     theme: ITheme;
-//     fontFamily: TFontFamily;
-//     fontSize: TFontSize;
-//     loadPostsCount: number;
-//     isCardanoActive: boolean;
-// };
-
 export interface IApplicationSliceState {
     theme: string;
     fontFamily: string;
@@ -26,13 +14,17 @@ export enum CountsLoadPostsKeys {
     LARGE = "large",
 };
 
-export const countsLoadPostsMap: { [key in CountsLoadPostsKeys]: TCountLoadPosts } = {
+export const countsLoadPostsLabelsMap: { [key in CountsLoadPostsKeys]: string } = {
+    "few": "10 posts per page",
+    "medium": "20 posts per page",
+    "large": "30 posts per page",
+};
+
+export const countsLoadPostsValuesMap: { [key in CountsLoadPostsKeys]: TCountLoadPosts } = {
     "few": 10,
     "medium": 20,
     "large": 30,
 };
-
-export const countsLoadPostsKeysList = Object.keys(countsLoadPostsMap);
 
 export enum CardanoStatesKeys {
     ACTIVE = "active",
@@ -41,9 +33,12 @@ export enum CardanoStatesKeys {
 
 export type TCardanoState = boolean;
 
-export const cardanoStatesMap: { [key in CardanoStatesKeys]: TCardanoState} = {
+export const cardanoStatesLabelsMap: { [key in CardanoStatesKeys]: string } = {
+    "active": "Cardano active",
+    "inactive": "Cardano inactive",
+} 
+
+export const cardanoStatesValuesMap: { [key in CardanoStatesKeys]: TCardanoState} = {
     "active": true,
     "inactive": false,
 };
-
-export const cardanoStatesKeysList = Object.keys(cardanoStatesMap);
