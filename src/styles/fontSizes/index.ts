@@ -4,13 +4,16 @@ export enum FontSizesKeys {
     LARGE = "large",
 };
 
-export const fontSizesMap: {[key in FontSizesKeys]: string} = {
-    "small": "14px",
-    "medium": "18px",
-    "large": "20px",
+export const fontSizesLabelsMap: {[key in FontSizesKeys]: string} = {
+    "small": "Small font size",
+    "medium": "Medium font size",
+    "large": "Large font size",
 };
 
-export const fontSizesKeysList = Object.keys(fontSizesMap);
+export const fontSizesValuesMap: {[key in FontSizesKeys]: string} = {
+    "small": "small-font",
+    "medium": "medium-font",
+    "large": "large-font",
+};
 
-// export const DEFAULT_FONT_SIZE = fontSizesMap[FontSizes.SMALL];
 export const DEFAULT_FONT_SIZE = FontSizesKeys.SMALL;

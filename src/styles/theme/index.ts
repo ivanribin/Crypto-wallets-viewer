@@ -34,14 +34,16 @@ export const purpleTheme: ITheme = {
     dangerBackground: ColorPalette.TRANSLUCENT_UNICORN,
 };
 
-export const themesMap: { [key in ThemesKeys]: ITheme } = {
-    "dark": darkTheme,
-    "light": lightTheme,
-    "purple": purpleTheme,
+export const themesLabelsMap: { [key in ThemesKeys]: string } = {
+    "dark": "Dark",
+    "light": "Light",
+    "purple": "Purple",
 };
 
-export const themesKeysList = Object.keys(themesMap);
+export const themesValuesMap: { [key in ThemesKeys]: string } = {
+    "dark": "dark",
+    "light": "light",
+    "purple": "purple",
+};
 
 export const DEFAULT_THEME_NAME = ThemesKeys.DARK;
-
-// export const DEFAULT_THEME: ITheme = themesMap[DEFAULT_THEME_NAME];

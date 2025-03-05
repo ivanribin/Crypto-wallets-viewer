@@ -12,8 +12,8 @@ export const settingsIdList = Object.values(SettingsConfigKeys);
 
 export interface ISettingsConfigItem {
     id: string;
-    keysList: string[];
-    selectedKey: string;
+    labelsMap: any; 
+    selectedValue: string;
     setValue: any;
 };
 

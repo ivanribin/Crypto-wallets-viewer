@@ -1,42 +1,41 @@
 import { TSettingsConfig, SettingsConfigKeys } from "../../pages/SettingsPage/meta";
-import { IApplicationSliceState } from "../../store/slices/Application/meta";
 import { setTheme, setFontFamily, setFontSize, setLoadPostsCount, setIsCardanoActive } from "../../store/slices/Application";
-import { countsLoadPostsKeysList, cardanoStatesKeysList } from "../../store/slices/Application/meta";
-import { themesKeysList } from "../../styles/theme";
-import { fontFamiliesKeysList } from "../../styles/fontFamilies";
-import { fontSizesKeysList } from "../../styles/fontSizes";
+import { fontFamiliesLabelsMap } from "../../styles/fontFamilies";
+import { themesLabelsMap } from "../../styles/theme";
+import { fontSizesLabelsMap } from "../../styles/fontSizes";
+import { cardanoStatesLabelsMap, countsLoadPostsLabelsMap, IApplicationSliceState } from "../../store/slices/Application/meta";
 
 export class SettingsService {
     public static getSettingsConfig(currentApplicationState: IApplicationSliceState): TSettingsConfig {
         const settingsConfig: TSettingsConfig = [
             {
                 id: SettingsConfigKeys.THEME,
-                keysList: themesKeysList,
-                selectedKey: currentApplicationState.theme,
+                labelsMap: themesLabelsMap,
+                selectedValue: currentApplicationState.theme,
                 setValue: setTheme,
             },
             {
                 id: SettingsConfigKeys.FONT_FAMILY,
-                keysList: fontFamiliesKeysList,
-                selectedKey: currentApplicationState.fontFamily,
+                labelsMap: fontFamiliesLabelsMap,
+                selectedValue: currentApplicationState.fontFamily,
                 setValue: setFontFamily,
             },
             {
                 id: SettingsConfigKeys.FONT_SIZE,
-                keysList: fontSizesKeysList,
-                selectedKey: currentApplicationState.fontSize,
+                labelsMap: fontSizesLabelsMap,
+                selectedValue: currentApplicationState.fontSize,
                 setValue: setFontSize,
             },
             {
                 id: SettingsConfigKeys.LOAD_POSTS_COUNT,
-                keysList: countsLoadPostsKeysList,
-                selectedKey: currentApplicationState.loadPostsCount,
+                labelsMap: countsLoadPostsLabelsMap,
+                selectedValue: currentApplicationState.loadPostsCount,
                 setValue: setLoadPostsCount,
             },
             {
                 id: SettingsConfigKeys.IS_CARDANO_ACTIVE,
-                keysList: cardanoStatesKeysList,
-                selectedKey: currentApplicationState.isCardanoActive,
+                labelsMap: cardanoStatesLabelsMap,
+                selectedValue: currentApplicationState.isCardanoActive,
                 setValue: setIsCardanoActive,
             },
         ];

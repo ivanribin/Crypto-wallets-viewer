@@ -1,7 +1,7 @@
 export enum ThemesKeys {
     DARK = "dark",
     LIGHT = "light",
-    purple = "purple",
+    PURPLE = "purple",
 };
 
 export interface ITheme {
