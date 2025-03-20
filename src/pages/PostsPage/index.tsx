@@ -12,10 +12,14 @@ import {
 } from "../../utils/constants";
 import { useSelector } from "react-redux";
 import { TRootState } from "../../store";
-import { CountsLoadPostsKeys, countsLoadPostsValuesMap  } from "../../store/slices/Application/meta";
+import { CountsLoadPostsKeys, countsLoadPostsValuesMap, IsLoadingKeys  } from "../../store/slices/Application/meta";
+import { setIsLoading } from "../../store/slices/Application";
+import { useDispatch } from "react-redux";
 import "./style.css";
 
 const PostsPage = (): ReactElement => {
+    const dispatch = useDispatch();
+
     //TODO create service, that return value in application state map by key in redux
     const loadPostsCountKey = useSelector((state: TRootState) => state.application.loadPostsCount) as CountsLoadPostsKeys;
     const loadPostsCount = countsLoadPostsValuesMap[loadPostsCountKey];
@@ -37,6 +41,7 @@ const PostsPage = (): ReactElement => {
         try {
             setError(null);
             setArePostsLoading(true);
+            dispatch(setIsLoading(IsLoadingKeys.TRUE));
 
             const postsData = await getPosts();
 
@@ -50,6 +55,7 @@ const PostsPage = (): ReactElement => {
             setError(error);
         } finally {
             setArePostsLoading(false);
+            dispatch(setIsLoading(IsLoadingKeys.FALSE));
         }
     };
 
