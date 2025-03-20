@@ -1,8 +1,8 @@
-import useNavigation from "../../hooks/useNavigation";
-import useWindowResizeObserver from "../../hooks/WindowResizeObserver";
+import useNavigation from "@hooks/useNavigation";
+import useWindowResizeObserver from "@hooks/WindowResizeObserver";
 import { ReactElement, useState } from "react";
 import { Link } from "react-router-dom";
-import { INavigationItem } from "../../hooks/useNavigation/meta";
+import { INavigationItem } from "@hooks/useNavigation/meta";
 import "./style.css";
 
 export const NAVBAR_MINIMUM_DEFAULT_WINDOW_WIDTH: number = 1280;

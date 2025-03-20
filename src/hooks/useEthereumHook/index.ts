@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { TWalletAddress } from "../../pages/WalletsPage/meta";
-import { WalletConnectMessages } from "../../utils/constants";
-import { setIsLoading } from "../../store/slices/Application";
+import { type TWalletAddress } from "@pages/WalletsPage/meta";
+import { WalletConnectMessages } from "@utils/constants";
+import { setIsLoading } from "@store/slices/Application";
 
 export type TEthereumMethod = string;
 

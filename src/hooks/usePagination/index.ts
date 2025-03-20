@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { getPaginatorButtonsNamesList, TPaginatorItemsList } from "../../utils/constants";
+import { getPaginatorButtonsNamesList, type TPaginatorItemsList } from "@utils/constants";
 import { IButtonsDisable } from "./meta";
 
 const usePagination = (currentNumber: number, totalPageNumber: number) => {

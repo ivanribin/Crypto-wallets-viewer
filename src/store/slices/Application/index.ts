@@ -1,10 +1,10 @@
-import LocalStorageService from "../../../services/LocalStorageService";
+import LocalStorageService from "@services/LocalStorageService";
 import { createSlice, type Slice } from "@reduxjs/toolkit";
-import { DEFAULT_THEME_NAME } from "../../../styles/theme";
+import { DEFAULT_THEME_NAME } from "@styles/theme";
 import { IApplicationSliceState, CountsLoadPostsKeys, CardanoStatesKeys, IsLoadingKeys } from "./meta";
-import { DEFAULT_FONT_FAMILY } from "../../../styles/fontFamilies";
-import { DEFAULT_FONT_SIZE } from "../../../styles/fontSizes";
-import { IS_LOADING_LOCAL_STORAGE_KEY, SettingsConfigKeys, settingsIdList } from "../../../pages/SettingsPage/meta";
+import { DEFAULT_FONT_FAMILY } from "@styles/fontFamilies";
+import { DEFAULT_FONT_SIZE } from "@styles/fontSizes";
+import { IS_LOADING_LOCAL_STORAGE_KEY, SettingsConfigKeys, settingsIdList } from "@pages/SettingsPage/meta";
 
 const defaultState: IApplicationSliceState = {
     theme: DEFAULT_THEME_NAME,
@@ -17,7 +17,7 @@ const defaultState: IApplicationSliceState = {
 
 const getSavedApplicationState = (): IApplicationSliceState => {
     const savedApplicationState: IApplicationSliceState = defaultState;
-    
+
     settingsIdList.forEach((settingId) => {
         const settingValue = LocalStorageService.getLocalStorageRecord(settingId);
 
@@ -70,8 +70,6 @@ const ApplicationSlice: Slice<IApplicationSliceState> = createSlice({
         setIsLoading: (state, action) => {
             const newIsLoading = action.payload;
 
-            console.log(newIsLoading);
-            
             state.isLoading = newIsLoading;
             LocalStorageService.setLocalStorageRecord(IS_LOADING_LOCAL_STORAGE_KEY, newIsLoading);
         }

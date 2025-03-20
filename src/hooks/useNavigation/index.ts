@@ -1,6 +1,6 @@
 import { useLocation } from "react-router";
-import { BasePaths, PathsTitles } from "../../router/routes";
-import { INavigationItem } from "./meta";
+import { BasePaths, PathsTitles } from "@router/routes";
+import { type INavigationItem } from "./meta";
 
 const useNavigation = () => {
     const location = useLocation();

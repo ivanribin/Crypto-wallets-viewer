@@ -1,6 +1,6 @@
+import SettingsFieldButton from "@components/SettingsFieldButton";
 import { type ReactElement } from "react";
-import SettingsFieldButton from "../SettingsFieldButton";
-import { ISettingsConfigItem } from "../../pages/SettingsPage/meta";
+import { type ISettingsConfigItem } from "@pages/SettingsPage/meta";
 import "./style.css";
 
 export interface ISettingsFieldMenuProps {
@@ -17,7 +17,7 @@ const SettingsFieldMenu = ({
 
     const getSettingLabelByValue = (value: string): string => {
         return labelsMap[value]!;
-    }
+    };
 
     return (
         <div className="settings-field-container">
@@ -27,7 +27,6 @@ const SettingsFieldMenu = ({
                     value={value}
                     selectedValue={selectedValue}
                     label={getSettingLabelByValue(value)}
-
                     setValue={setValue}
                 />
             ))}

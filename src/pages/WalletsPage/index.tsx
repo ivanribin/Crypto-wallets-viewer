@@ -1,24 +1,33 @@
-import useCardanoHook from "../../hooks/useCardanoHook";
-import useEthereumHook from "../../hooks/useEthereumHook";
-import WalletsPageChapter from "../../components/WalletsPageChapter";
+import useCardanoHook from "@hooks/useCardanoHook";
+import useEthereumHook from "@hooks/useEthereumHook";
+import WalletsPageChapter from "@components/WalletsPageChapter";
 import { type ReactElement } from "react";
-import {
-    cardanoWalletChapterTexts,
-    ethereumWalletChapterTexts,
-} from "./meta";
+import { cardanoWalletChapterTexts, ethereumWalletChapterTexts } from "./meta";
 import { useSelector } from "react-redux";
-import { TRootState } from "../../store";
-import { CardanoStatesKeys, cardanoStatesValuesMap } from "../../store/slices/Application/meta";
+import { type TRootState } from "@store/index";
+import {
+    CardanoStatesKeys,
+    cardanoStatesValuesMap,
+} from "../../store/slices/Application/meta";
 import "./style.css";
 
 const WalletsPage = (): ReactElement => {
     //TODO create service, that return value in application state map by key in redux
-    const isCardanoActiveKey = useSelector((state: TRootState) => state.application.isCardanoActive) as CardanoStatesKeys;
+    const isCardanoActiveKey = useSelector(
+        (state: TRootState) => state.application.isCardanoActive
+    ) as CardanoStatesKeys;
     const isCardanoActive = cardanoStatesValuesMap[isCardanoActiveKey];
 
-    const { ethereumAccountAddress, setEthereumAccountAddress, connectEthereumWallet } = useEthereumHook();
-    const { cardanoMaskAccountAddress, setCardanoMaskAccountAddress, connectCardanoWallet } =
-        useCardanoHook();
+    const {
+        ethereumAccountAddress,
+        setEthereumAccountAddress,
+        connectEthereumWallet,
+    } = useEthereumHook();
+    const {
+        cardanoMaskAccountAddress,
+        setCardanoMaskAccountAddress,
+        connectCardanoWallet,
+    } = useCardanoHook();
 
     return (
         <div>

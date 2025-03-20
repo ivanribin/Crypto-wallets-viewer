@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { TWalletAddress } from "../../pages/WalletsPage/meta";
-import { WalletConnectMessages } from "../../utils/constants";
-import { decodeAddress } from "../../utils/constants";
-import { setIsLoading } from "../../store/slices/Application";
+import { type TWalletAddress } from "@pages/WalletsPage/meta";
+import { WalletConnectMessages, decodeAddress } from "@utils/constants";
+import { setIsLoading } from "@store/slices/Application";
 import { useDispatch } from "react-redux";
 
 export const CARDANO_EXTENSION_IDENTIFIER = "lace";

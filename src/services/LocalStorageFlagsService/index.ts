@@ -1,4 +1,4 @@
-import LocalStorageService from "../LocalStorageService";
+import LocalStorageService from "@services/LocalStorageService";
 
 export const enum LocalStorageFlags {
     ACTIVE = "active",

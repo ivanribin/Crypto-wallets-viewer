@@ -1,9 +1,9 @@
-import { TSettingsConfig, SettingsConfigKeys } from "../../pages/SettingsPage/meta";
-import { setTheme, setFontFamily, setFontSize, setLoadPostsCount, setIsCardanoActive } from "../../store/slices/Application";
-import { fontFamiliesLabelsMap } from "../../styles/fontFamilies";
-import { themesLabelsMap } from "../../styles/theme";
-import { fontSizesLabelsMap } from "../../styles/fontSizes";
-import { cardanoStatesLabelsMap, countsLoadPostsLabelsMap, IApplicationSliceState } from "../../store/slices/Application/meta";
+import { type TSettingsConfig, SettingsConfigKeys } from "@pages/SettingsPage/meta";
+import { setTheme, setFontFamily, setFontSize, setLoadPostsCount, setIsCardanoActive } from "@store/slices/Application";
+import { fontFamiliesLabelsMap } from "@styles/fontFamilies";
+import { themesLabelsMap } from "@styles/theme";
+import { fontSizesLabelsMap } from "@styles/fontSizes";
+import { cardanoStatesLabelsMap, countsLoadPostsLabelsMap, IApplicationSliceState } from "@store/slices/Application/meta";
 
 export class SettingsService {
     public static getSettingsConfig(currentApplicationState: IApplicationSliceState): TSettingsConfig {

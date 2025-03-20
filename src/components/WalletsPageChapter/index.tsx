@@ -1,10 +1,8 @@
-import { Dispatch, SetStateAction, type ReactElement } from "react";
-import { TWalletAddress } from "../../pages/WalletsPage/meta";
-import {
-    IConnectedWalletTexts,
-} from "./meta";
-import "./style.css";
 import ConnectedWalletInfo from "../ConnectedWalletInfo";
+import { Dispatch, SetStateAction, type ReactElement } from "react";
+import { type TWalletAddress } from "@pages/WalletsPage/meta";
+import { type IConnectedWalletTexts } from "./meta";
+import "./style.css";
 
 export interface IConnectedWallet {
     connectFunction: any;
@@ -27,7 +25,10 @@ const WalletsPageChapter = ({
             {!activeWalletAddress ? (
                 <button onClick={connectFunction}>{connectButtonText}</button>
             ) : (
-                <ConnectedWalletInfo activeWalletAddress={activeWalletAddress} changeWalletAddress={changeWalletAddress}/>
+                <ConnectedWalletInfo
+                    activeWalletAddress={activeWalletAddress}
+                    changeWalletAddress={changeWalletAddress}
+                />
             )}
         </div>
     );

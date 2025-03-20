@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
-import { IConnectedWalletTexts } from "../../components/WalletsPageChapter/meta";
+import { type IConnectedWalletTexts } from "@components/WalletsPageChapter/meta";
 
 export type TWalletAddress = string | null;
 export type TChangeWalletAddress = Dispatch<SetStateAction<TWalletAddress>>;

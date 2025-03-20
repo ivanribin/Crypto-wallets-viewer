@@ -1,5 +1,3 @@
-import { IApplicationSliceState } from "../../store/slices/Application/meta";
-
 export enum SettingsConfigKeys {
     THEME = "theme",
     FONT_FAMILY = "fontFamily",
