@@ -1,11 +1,11 @@
-import { useState, type ReactElement } from "react";
-import "./style.css";
-import { TRootState } from "../../store";
+import SettingsFieldMenu from "@components/SettingsFieldMenu";
+import { type ReactElement } from "react";
+import { TRootState } from "@store/index";
 import { useSelector } from "react-redux";
-import { IApplicationSliceState } from "../../store/slices/Application/meta";
+import { IApplicationSliceState } from "@store/slices/Application/meta";
 import { TSettingsConfig } from "./meta";
-import { SettingsService } from "../../services/SettingsService";
-import SettingsFieldMenu from "../../components/SettingsFieldMenu";
+import { SettingsService } from "@services/SettingsService";
+import "./style.css";
 
 const SettingsPage = (): ReactElement => {
     const applicationState: IApplicationSliceState = useSelector(

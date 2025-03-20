@@ -1,7 +1,7 @@
+import WalletsPage from "@pages/WalletsPage";
+import PostsPage from "@pages/PostsPage";
+import SettingsPage from "@pages/SettingsPage";
 import { RouteObject } from "react-router-dom";
-import PostsPage from "../pages/PostsPage";
-import SettingsPage from "../pages/SettingsPage";
-import WalletsPage from "../pages/WalletsPage";
 
 export enum PathsTitles {
     POSTS = "posts",
@@ -15,23 +15,22 @@ export enum BasePaths {
     SETTINGS = "/settings",
 }
 
-const applicationRoutes: RouteObject[] =[
+const applicationRoutes: RouteObject[] = [
     {
         id: PathsTitles.POSTS,
         path: BasePaths.POSTS,
-        element: <PostsPage />
+        element: <PostsPage />,
     },
     {
         id: PathsTitles.WALLETS,
         path: BasePaths.WALLETS,
-        element: <WalletsPage />
+        element: <WalletsPage />,
     },
     {
         id: PathsTitles.SETTINGS,
         path: BasePaths.SETTINGS,
-        element: <SettingsPage />
+        element: <SettingsPage />,
     },
 ];
 
 export default applicationRoutes;
-

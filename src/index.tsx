@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom/client";
-import Application from "./components/Application";
-import store from "./store";
+import Application from "@components/Application";
+import store from "@store/index";
 import { Provider } from "react-redux";
 
 const root = ReactDOM.createRoot(

@@ -1,4 +1,4 @@
-import NavigationBar from "../components/NavigationBar";
+import NavigationBar from "@components/NavigationBar";
 import applicationRoutes from "./routes";
 import { type ReactElement } from "react";
 import {

@@ -1,23 +1,33 @@
-import Paginator from "../../components/Paginator";
-import Posts from "../../components/Posts";
-import Search from "../../components/Search";
-import useListFilter from "../../hooks/useListFilter";
+import Paginator from "@components/Paginator";
+import Posts from "@components/Posts";
+import Search from "@components/Search";
+import useListFilter from "@hooks/useListFilter";
 import { useEffect, useState, type ReactElement } from "react";
-import { TPosts } from "../../components/Posts/meta";
+import { type TPosts } from "@components/Posts/meta";
 import { getPosts } from "../../api";
 import {
     DEFAULT_PAGE_NUMBER,
     getListShowPath,
     getTotalPageCount,
-} from "../../utils/constants";
+} from "@utils/constants";
 import { useSelector } from "react-redux";
-import { TRootState } from "../../store";
-import { CountsLoadPostsKeys, countsLoadPostsValuesMap  } from "../../store/slices/Application/meta";
+import { type TRootState } from "@store/index";
+import {
+    CountsLoadPostsKeys,
+    countsLoadPostsValuesMap,
+    IsLoadingKeys,
+} from "@store/slices/Application/meta";
+import { setIsLoading } from "@store/slices/Application";
+import { useDispatch } from "react-redux";
 import "./style.css";
 
 const PostsPage = (): ReactElement => {
+    const dispatch = useDispatch();
+
     //TODO create service, that return value in application state map by key in redux
-    const loadPostsCountKey = useSelector((state: TRootState) => state.application.loadPostsCount) as CountsLoadPostsKeys;
+    const loadPostsCountKey = useSelector(
+        (state: TRootState) => state.application.loadPostsCount
+    ) as CountsLoadPostsKeys;
     const loadPostsCount = countsLoadPostsValuesMap[loadPostsCountKey];
 
     const [postsList, setPostsList] = useState<TPosts>([]);
@@ -37,6 +47,7 @@ const PostsPage = (): ReactElement => {
         try {
             setError(null);
             setArePostsLoading(true);
+            dispatch(setIsLoading(IsLoadingKeys.TRUE));
 
             const postsData = await getPosts();
 
@@ -50,6 +61,7 @@ const PostsPage = (): ReactElement => {
             setError(error);
         } finally {
             setArePostsLoading(false);
+            dispatch(setIsLoading(IsLoadingKeys.FALSE));
         }
     };
 
@@ -65,10 +77,14 @@ const PostsPage = (): ReactElement => {
         return <h2>Unable to load posts {error?.message}</h2>;
     }
 
-    const listShowPath: TPosts = getListShowPath(filteredList, currentNumber, loadPostsCount);
+    const listShowPath: TPosts = getListShowPath(
+        filteredList,
+        currentNumber,
+        loadPostsCount
+    );
     const totalPageNumber: number = getTotalPageCount(
         filteredList,
-        loadPostsCount,
+        loadPostsCount
     );
 
     return (

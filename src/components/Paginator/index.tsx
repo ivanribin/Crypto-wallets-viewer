@@ -1,6 +1,6 @@
-import usePagination from "../../hooks/usePagination";
+import usePagination from "@hooks/usePagination";
 import { Dispatch, SetStateAction, type ReactElement } from "react";
-import { PaginatorFieldsTexts } from "../../utils/constants";
+import { PaginatorFieldsTexts } from "@utils/constants";
 import "./style.css";
 
 export interface IPaginatorProps {
@@ -56,7 +56,7 @@ const Paginator = ({
             </div>
 
             <div className="paginator-items">
-                {paginatorItemsList.map((item, index) => 
+                {paginatorItemsList.map((item, index) =>
                     !item.isButton ? (
                         <div
                             key={index}
@@ -64,7 +64,7 @@ const Paginator = ({
                         >
                             {item.info}
                         </div>
-                    ) : ( 
+                    ) : (
                         <button
                             key={index}
                             className={`paginator-button ${item.selectClass}`}

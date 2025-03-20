@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { TWalletAddress } from "../../pages/WalletsPage/meta";
-import { WalletConnectMessages } from "../../utils/constants";
+import { type TWalletAddress } from "@pages/WalletsPage/meta";
+import { WalletConnectMessages } from "@utils/constants";
+import { setIsLoading } from "@store/slices/Application";
 
 export type TEthereumMethod = string;
 
@@ -21,6 +22,8 @@ const useEthereumHook = () => {
         return;
       }
 
+      setIsLoading(true);
+
       const accounts = await window.ethereum.request({
         method: GET_ETHERIUIM_ACCOUNTS_METHOD,
       });
@@ -35,6 +38,8 @@ const useEthereumHook = () => {
     } catch (error) {
       console.error(WalletConnectMessages.CONNECT_ERROR, error);
       throw error;
+    } finally {
+      setIsLoading(false);
     }
   };
 

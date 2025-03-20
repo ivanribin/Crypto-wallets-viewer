@@ -1,6 +1,6 @@
 import { type ReactElement } from "react";
 import { ConnectedWalletMessages, ConnectedWalletTexts } from "./meta";
-import { TChangeWalletAddress } from "../../pages/WalletsPage/meta";
+import { type TChangeWalletAddress } from "@pages/WalletsPage/meta";
 import "./style.css";
 
 export interface IConnectedWalletInfoProps {

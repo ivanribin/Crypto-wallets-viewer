@@ -1,10 +1,10 @@
-import LocalStorageService from "../../../services/LocalStorageService";
+import LocalStorageService from "@services/LocalStorageService";
 import { createSlice, type Slice } from "@reduxjs/toolkit";
-import { DEFAULT_THEME_NAME } from "../../../styles/theme";
-import { IApplicationSliceState, CountsLoadPostsKeys, CardanoStatesKeys } from "./meta";
-import { DEFAULT_FONT_FAMILY } from "../../../styles/fontFamilies";
-import { DEFAULT_FONT_SIZE } from "../../../styles/fontSizes";
-import { SettingsConfigKeys, settingsIdList } from "../../../pages/SettingsPage/meta";
+import { DEFAULT_THEME_NAME } from "@styles/theme";
+import { IApplicationSliceState, CountsLoadPostsKeys, CardanoStatesKeys, IsLoadingKeys } from "./meta";
+import { DEFAULT_FONT_FAMILY } from "@styles/fontFamilies";
+import { DEFAULT_FONT_SIZE } from "@styles/fontSizes";
+import { IS_LOADING_LOCAL_STORAGE_KEY, SettingsConfigKeys, settingsIdList } from "@pages/SettingsPage/meta";
 
 const defaultState: IApplicationSliceState = {
     theme: DEFAULT_THEME_NAME,
@@ -12,11 +12,12 @@ const defaultState: IApplicationSliceState = {
     fontSize: DEFAULT_FONT_SIZE,
     loadPostsCount: CountsLoadPostsKeys.FEW,
     isCardanoActive: CardanoStatesKeys.INACTIVE,
+    isLoading: IsLoadingKeys.FALSE,
 };
 
 const getSavedApplicationState = (): IApplicationSliceState => {
     const savedApplicationState: IApplicationSliceState = defaultState;
-    
+
     settingsIdList.forEach((settingId) => {
         const settingValue = LocalStorageService.getLocalStorageRecord(settingId);
 
@@ -65,11 +66,17 @@ const ApplicationSlice: Slice<IApplicationSliceState> = createSlice({
 
             state.isCardanoActive = newCardanoStatus;
             LocalStorageService.setLocalStorageRecord(SettingsConfigKeys.IS_CARDANO_ACTIVE, newCardanoStatus);
+        },
+        setIsLoading: (state, action) => {
+            const newIsLoading = action.payload;
+
+            state.isLoading = newIsLoading;
+            LocalStorageService.setLocalStorageRecord(IS_LOADING_LOCAL_STORAGE_KEY, newIsLoading);
         }
     },
 });
 
-export const { setTheme, setFontFamily, setFontSize, setLoadPostsCount, setIsCardanoActive } = ApplicationSlice.actions;
+export const { setTheme, setFontFamily, setFontSize, setLoadPostsCount, setIsCardanoActive, setIsLoading } = ApplicationSlice.actions;
 
 export default ApplicationSlice.reducer;
 
