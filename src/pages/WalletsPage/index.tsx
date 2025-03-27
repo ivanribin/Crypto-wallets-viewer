@@ -1,14 +1,14 @@
 import useCardanoHook from "@hooks/useCardanoHook";
 import useEthereumHook from "@hooks/useEthereumHook";
 import WalletsPageChapter from "@components/WalletsPageChapter";
-import { type ReactElement } from "react";
-import { cardanoWalletChapterTexts, ethereumWalletChapterTexts } from "./meta";
 import { useSelector } from "react-redux";
-import { type TRootState } from "@store/index";
+import { cardanoWalletChapterTexts, ethereumWalletChapterTexts } from "./meta";
 import {
     CardanoStatesKeys,
     cardanoStatesValuesMap,
 } from "../../store/slices/Application/meta";
+import { type ReactElement } from "react";
+import { type TRootState } from "@store/index";
 import "./style.css";
 
 const WalletsPage = (): ReactElement => {
