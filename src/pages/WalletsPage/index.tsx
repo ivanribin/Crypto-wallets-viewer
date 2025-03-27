@@ -12,7 +12,6 @@ import { type TRootState } from "@store/index";
 import "./style.css";
 
 const WalletsPage = (): ReactElement => {
-    //TODO create service, that return value in application state map by key in redux
     const isCardanoActiveKey = useSelector(
         (state: TRootState) => state.application.isCardanoActive
     ) as CardanoStatesKeys;
@@ -31,7 +30,6 @@ const WalletsPage = (): ReactElement => {
 
     return (
         <div>
-            {/* //TODO Use hooks in WalletsPageChapter component because decrease props count and make code cleaner */}
             <WalletsPageChapter
                 connectFunction={connectEthereumWallet}
                 textData={ethereumWalletChapterTexts}
@@ -39,9 +37,7 @@ const WalletsPage = (): ReactElement => {
                 changeWalletAddress={setEthereumAccountAddress}
             />
 
-            {!isCardanoActive ? (
-                <></>
-            ) : (
+            {isCardanoActive && (
                 <WalletsPageChapter
                     connectFunction={connectCardanoWallet}
                     textData={cardanoWalletChapterTexts}

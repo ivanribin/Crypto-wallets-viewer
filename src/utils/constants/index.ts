@@ -1,7 +1,6 @@
 import { Address } from "@emurgo/cardano-serialization-lib-asmjs";
 import { Buffer } from "buffer";
 
-
 export interface IPaginatorItem {
     info: string,
     isButton: boolean;
@@ -23,7 +22,7 @@ export const enum PaginatorButtonSelectClasses {
 
 export const DEFAULT_PAGE_NUMBER: number = 1;
 
-export const PAGINATOR_SIBLING_COUNT: number = 0;
+export const PAGINATOR_SIBLING_COUNT: number = 1;
 export const PAGINATOR_SOME_PAGES_SYMBOL_ITEM: IPaginatorItem = {
     info: PaginatorFieldsTexts.SOME_PAGES_SYMBOL,
     isButton: false,

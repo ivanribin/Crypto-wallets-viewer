@@ -1,6 +1,6 @@
 import { getPosts } from "@api/index";
 import { setIsLoading } from "@store/slices/Application";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { DEFAULT_PAGE_NUMBER, getListShowPath, getTotalPageCount } from "@utils/constants";
 import { CountsLoadPostsKeys, countsLoadPostsValuesMap } from "@store/slices/Application/meta";
@@ -11,7 +11,7 @@ const useListFilter = () => {
     const dispatch = useDispatch();
 
     const [postsList, setPostsList] = useState<TPosts>([]);
-    const [filteredList, setFilteredList] = useState<TPosts[]>([]);
+    const [filteredList, setFilteredList] = useState<TPosts>([]);
 
     const [query, setQuery] = useState<string>("");
 
@@ -20,7 +20,6 @@ const useListFilter = () => {
 
     const [loadError, setLoadError] = useState<any>(null);
 
-    //TODO create service, that return value in application state map by key in redux
     const loadPostsCountKey = useSelector(
         (state: TRootState) => state.application.loadPostsCount
     ) as CountsLoadPostsKeys;
@@ -36,6 +35,13 @@ const useListFilter = () => {
         loadPostsCount
     );
 
+    useEffect(() => {
+        loadPosts();
+    }, []);
+
+    useEffect(() => {
+        updateFilteredList();
+    }, [query])
 
     const loadPosts = async () => {
         try {
@@ -58,20 +64,16 @@ const useListFilter = () => {
     };
 
     const updateFilteredList = (): void => {
-        const filteredList: any[] = [];
+        const updatedList: TPosts = [];
         const itemsAllTextLists = postsList.map((item) => Object.values(item).map((value) => String(value)));
 
         itemsAllTextLists.forEach((itemAllTextList, itemIndex) => {
-            for (let index = 0; index < itemAllTextList.length; index++) {
-                if (itemAllTextList[index].includes(query)) {
-                    filteredList.push(postsList[itemIndex]);
-
-                    break;
-                }
+            if (itemAllTextList.some((text) => text.includes(query))) {
+                updatedList.push(postsList[itemIndex]);
             }
         });
 
-        setFilteredList(filteredList);
+        setFilteredList(updatedList);
         setPageNumber(DEFAULT_PAGE_NUMBER);
     }
 
