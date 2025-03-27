@@ -7,7 +7,7 @@ const usePagination = (currentNumber: number, totalPageNumber: number) => {
         const paginatorItemsList: TPaginatorItemsList = getPaginatorButtonsNamesList(currentNumber, totalPageNumber); 
         const buttonsDisable: IButtonsDisable = {
             previousPage: currentNumber === 1,
-            nexPage: currentNumber === totalPageNumber,
+            nextPage: currentNumber === totalPageNumber,
         }
 
         return {

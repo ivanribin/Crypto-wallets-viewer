@@ -1,4 +1,8 @@
-import { ThemesKeys } from "./meta";
+export enum ThemesKeys {
+    DARK = "dark",
+    LIGHT = "light",
+    PURPLE = "purple",
+};
 
 export const themesLabelsMap: { [key in ThemesKeys]: string } = {
     "dark": "Dark",

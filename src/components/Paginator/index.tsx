@@ -1,3 +1,4 @@
+import PaginatorItem from "@components/PaginatorItem";
 import usePagination from "@hooks/usePagination";
 import { Dispatch, SetStateAction, type ReactElement } from "react";
 import { PaginatorFieldsTexts } from "@utils/constants";
@@ -52,31 +53,20 @@ const Paginator = ({
             </div>
 
             <div className="paginator-items">
-                {paginatorItemsList.map((item, index) =>
-                    !item.isButton ? (
-                        <div
-                            key={index}
-                            className="paginator-some-pages-symbol"
-                        >
-                            {item.info}
-                        </div>
-                    ) : (
-                        <button
-                            key={index}
-                            className={`paginator-button ${item.selectClass}`}
-                            onClick={() => changePageNumber(Number(item.info))}
-                        >
-                            {item.info}
-                        </button>
-                    )
-                )}
+                {paginatorItemsList.map((itemData, index) => (
+                    <PaginatorItem
+                        key={index}
+                        data={itemData}
+                        onClick={() => changePageNumber(Number(itemData.info))}
+                    />
+                ))}
             </div>
 
             <div>
                 <button
                     className="paginator-arrow"
                     onClick={setNextPage}
-                    disabled={buttonsDisable.nexPage}
+                    disabled={buttonsDisable.nextPage}
                 >
                     {PaginatorFieldsTexts.NEXT_PAGE_SYMBOl}
                 </button>

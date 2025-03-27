@@ -1,10 +1,10 @@
 import SettingsFieldMenu from "@components/SettingsFieldMenu";
-import { type ReactElement } from "react";
-import { TRootState } from "@store/index";
-import { useSelector } from "react-redux";
-import { IApplicationSliceState } from "@store/slices/Application/meta";
-import { TSettingsConfig } from "./meta";
 import { SettingsService } from "@services/SettingsService";
+import { useSelector } from "react-redux";
+import { type ReactElement } from "react";
+import { type TRootState } from "@store/index";
+import { type IApplicationSliceState } from "@store/slices/Application/meta";
+import { type TSettingsConfig } from "./meta";
 import "./style.css";
 
 const SettingsPage = (): ReactElement => {
