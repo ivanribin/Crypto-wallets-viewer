@@ -16,9 +16,9 @@ const SettingsPage = (): ReactElement => {
         SettingsService.getSettingsConfig(applicationState);
 
     return (
-        <div className="settings main-container">
+        <div className="settings">
             <h1>Settings</h1>
-            <div className="settings-container">
+            <div className="fields">
                 {settingsConfig.map((settingsField) => (
                     <SettingsFieldMenu
                         key={settingsField.id}

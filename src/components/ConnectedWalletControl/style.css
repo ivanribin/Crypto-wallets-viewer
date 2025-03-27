@@ -1,0 +1,8 @@
+.connected-wallet-control .address {
+    margin-bottom: 20px;
+}
+
+.connected-wallet-control .control-panel {
+    display: flex;
+    gap: 20px;
+}

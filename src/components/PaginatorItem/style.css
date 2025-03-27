@@ -1,11 +1,7 @@
-.paginator-button.unselect {
-    font-size: 60px;
-}
 
-.paginator-button.select {
-    font-size: 80px;
-}
 
 .paginator-some-pages-symbol {
-    font-size: 60px;
+    font-size: 30px;
+    
+    user-select: none;
 }

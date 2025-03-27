@@ -1,4 +1,3 @@
-.select {
-    user-select: none;
-    transform: scale(1.2);
+.menu-button {
+    width: 150px;
 }

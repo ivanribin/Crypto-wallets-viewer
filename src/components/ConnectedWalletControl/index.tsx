@@ -3,15 +3,15 @@ import { ConnectedWalletMessages, ConnectedWalletTexts } from "./meta";
 import { type TChangeWalletAddress } from "@pages/WalletsPage/meta";
 import "./style.css";
 
-export interface IConnectedWalletInfoProps {
+export interface IConnectedWalletControlProps {
     activeWalletAddress: string;
     changeWalletAddress: TChangeWalletAddress;
 }
 
-const ConnectedWalletInfo = ({
+const ConnectedWalletControl = ({
     activeWalletAddress,
     changeWalletAddress,
-}: IConnectedWalletInfoProps): ReactElement => {
+}: IConnectedWalletControlProps): ReactElement => {
     const copyActiveWalletAddress = (): void => {
         navigator.clipboard.writeText(activeWalletAddress);
 
@@ -23,13 +23,13 @@ const ConnectedWalletInfo = ({
     };
 
     return (
-        <div>
-            <p>{ConnectedWalletTexts.ADDRESS + activeWalletAddress}</p>
-            <div>
-                <button onClick={copyActiveWalletAddress}>
+        <div className="connected-wallet-control">
+            <p className="address">{ConnectedWalletTexts.ADDRESS + activeWalletAddress}</p>
+            <div className="control-panel">
+                <button className={"control"} onClick={copyActiveWalletAddress}>
                     {ConnectedWalletTexts.ADDRESS_COPY_BUTTON_TEXT}
                 </button>
-                <button onClick={deleteWallet}>
+                <button className={"control"} onClick={deleteWallet}>
                     {ConnectedWalletTexts.DELETE_WALLET_BUTTON_TEXT}
                 </button>
             </div>
@@ -37,4 +37,4 @@ const ConnectedWalletInfo = ({
     );
 };
 
-export default ConnectedWalletInfo;
+export default ConnectedWalletControl;

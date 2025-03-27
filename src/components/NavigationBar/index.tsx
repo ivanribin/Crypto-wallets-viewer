@@ -1,8 +1,8 @@
 import useNavigation from "@hooks/useNavigation";
 import useWindowResizeObserver from "@hooks/WindowResizeObserver";
-import { ReactElement, useState } from "react";
 import { Link } from "react-router-dom";
-import { INavigationItem } from "@hooks/useNavigation/meta";
+import { type ReactElement, useState } from "react";
+import { type INavigationItem } from "@hooks/useNavigation/meta";
 import "./style.css";
 
 export const NAVBAR_MINIMUM_DEFAULT_WINDOW_WIDTH: number = 1280;
@@ -13,8 +13,8 @@ export const enum NavigationItemClasses {
 }
 
 export const enum BurgerMenuItemClasses {
-    ACTIVE = "active",
-    INACTIVE = "inactive",
+    DEFAULT = "default",
+    OPEN = "open",
 }
 
 const NavigationBar = (): ReactElement => {
@@ -22,7 +22,7 @@ const NavigationBar = (): ReactElement => {
     const { windowWidth } = useWindowResizeObserver();
     const [isBurgerMenuVisible, setIsBurgerMenuVisible] = useState<boolean>(false);
 
-    const burgerMenuItemsClass: string = isBurgerMenuVisible ? BurgerMenuItemClasses.ACTIVE : BurgerMenuItemClasses.INACTIVE;
+    const burgerMenuItemsClass: string = isBurgerMenuVisible ? BurgerMenuItemClasses.DEFAULT : BurgerMenuItemClasses.OPEN;
 
     const changeBurgerMenuVisible = (): void => {
         setIsBurgerMenuVisible(!isBurgerMenuVisible);
@@ -47,8 +47,8 @@ const NavigationBar = (): ReactElement => {
         </div>
     ) : (
         <div className="navigation-bar burger-menu">
-            <button className="burger-menu open-button" onClick={changeBurgerMenuVisible}>Open</button>
-            <div className={`burger-menu navigation-items ${burgerMenuItemsClass}`}>
+            <button className="open-button" onClick={changeBurgerMenuVisible}>Open</button>
+            <div className={`navigation-items ${burgerMenuItemsClass}`}>
                 {navigationItems.map((item: INavigationItem) => {
                     const itemClass: string = item.isCurrent
                         ? NavigationItemClasses.ACTIVE

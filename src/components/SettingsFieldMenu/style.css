@@ -1,0 +1,7 @@
+.settings-field-menu {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    gap: 30px;
+}

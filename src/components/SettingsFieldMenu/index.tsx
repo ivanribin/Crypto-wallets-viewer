@@ -20,7 +20,7 @@ const SettingsFieldMenu = ({
     };
 
     return (
-        <div className="settings-field-container">
+        <div className="settings-field-menu">
             {valuesList.map((value) => (
                 <SettingsFieldButton
                     key={value}
