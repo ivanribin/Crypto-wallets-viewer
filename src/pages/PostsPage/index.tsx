@@ -15,7 +15,6 @@ import { type TRootState } from "@store/index";
 import {
     CountsLoadPostsKeys,
     countsLoadPostsValuesMap,
-    IsLoadingKeys,
 } from "@store/slices/Application/meta";
 import { setIsLoading } from "@store/slices/Application";
 import { useDispatch } from "react-redux";
@@ -47,7 +46,7 @@ const PostsPage = (): ReactElement => {
         try {
             setError(null);
             setArePostsLoading(true);
-            dispatch(setIsLoading(IsLoadingKeys.TRUE));
+            dispatch(setIsLoading(true));
 
             const postsData = await getPosts();
 
@@ -61,7 +60,7 @@ const PostsPage = (): ReactElement => {
             setError(error);
         } finally {
             setArePostsLoading(false);
-            dispatch(setIsLoading(IsLoadingKeys.FALSE));
+            dispatch(setIsLoading(false));
         }
     };
 

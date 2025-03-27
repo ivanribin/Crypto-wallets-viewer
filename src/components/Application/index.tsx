@@ -1,4 +1,5 @@
 import ApplicationRouter from "@router/index";
+import FullScreenLoader from "@components/FullScreenLoader";
 import { type ReactElement } from "react";
 import { useSelector } from "react-redux";
 import { type TRootState } from "@store/index";
@@ -26,8 +27,8 @@ const Application = (): ReactElement => {
         <div
             className={`application-container ${themeClass} ${fontFamilyClass} ${fontSizeClass}`}
         >
-            {/* {isLoading && <div className="loading"></div>} */}
             <ApplicationRouter />
+            {isLoading && <FullScreenLoader />}
         </div>
     );
 };

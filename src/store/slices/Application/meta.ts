@@ -4,7 +4,7 @@ export interface IApplicationSliceState {
     fontSize: string;
     loadPostsCount: string;
     isCardanoActive: string;
-    isLoading: string;
+    isLoading: boolean;
 }
 
 export type TCountLoadPosts = number;
@@ -43,14 +43,4 @@ export const cardanoStatesValuesMap: { [key in CardanoStatesKeys]: TCardanoState
     "active": true,
     "inactive": false,
 };
-
-export const enum IsLoadingKeys {
-    TRUE = "true",
-    FALSE = "false",
-};
-
-export const isLoadingValuesMap: { [key in IsLoadingKeys]: boolean } = {
-    "true": true,
-    "false": false,
-}
 

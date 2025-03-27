@@ -1,0 +1,36 @@
+.full-screen-loader {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 2;
+
+    background-color: rgba(126, 121, 121, 0.7);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+.full-screen-loader .loader {
+    width: 300px;
+    height: 300px;
+
+    border: 20px solid #f3f3f3;
+    border-top: 20px solid #3498db;
+    border-radius: 50%;
+    animation: loader-spin 2s linear infinite;
+}
+
+@keyframes loader-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
