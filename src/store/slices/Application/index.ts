@@ -1,7 +1,7 @@
 import LocalStorageService from "@services/LocalStorageService";
 import { createSlice, type Slice } from "@reduxjs/toolkit";
 import { DEFAULT_THEME_NAME } from "@styles/theme";
-import { IApplicationSliceState, CountsLoadPostsKeys, CardanoStatesKeys, IsLoadingKeys } from "./meta";
+import { IApplicationSliceState, CountsLoadPostsKeys, CardanoStatesKeys } from "./meta";
 import { DEFAULT_FONT_FAMILY } from "@styles/fontFamilies";
 import { DEFAULT_FONT_SIZE } from "@styles/fontSizes";
 import { IS_LOADING_LOCAL_STORAGE_KEY, SettingsConfigKeys, settingsIdList } from "@pages/SettingsPage/meta";
@@ -12,7 +12,7 @@ const defaultState: IApplicationSliceState = {
     fontSize: DEFAULT_FONT_SIZE,
     loadPostsCount: CountsLoadPostsKeys.FEW,
     isCardanoActive: CardanoStatesKeys.INACTIVE,
-    isLoading: IsLoadingKeys.FALSE,
+    isLoading: false,
 };
 
 const getSavedApplicationState = (): IApplicationSliceState => {
