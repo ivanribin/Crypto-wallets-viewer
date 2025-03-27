@@ -39,10 +39,6 @@ const Paginator = ({
         );
     };
 
-    function isString(variable: any): variable is string {
-        return typeof variable === "string";
-    }
-
     return (
         <div className="paginator">
             <div>

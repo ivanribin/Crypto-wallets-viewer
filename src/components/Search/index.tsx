@@ -17,7 +17,7 @@ export interface ISearchProps {
 
 const Search = ({
     query,
-    setQuery, 
+    setQuery,
     searchFunction,
 }: ISearchProps): ReactElement => {
     const [input, setInput] = useState<string>(query);
@@ -25,6 +25,8 @@ const Search = ({
     const handleQueryChange = (event: ChangeEvent<HTMLInputElement>): void => {
         setQuery(event.target.value);
         setInput(event.target.value);
+
+        searchFunction();
     };
 
     return (
@@ -40,9 +42,6 @@ const Search = ({
                     required
                 />
             </div>
-            <button className={`common-button`} onClick={searchFunction}>
-                {BUTTON_TEXT}
-            </button>
         </div>
     );
 };
