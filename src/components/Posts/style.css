@@ -3,5 +3,5 @@
     flex-direction: column;
     justify-content: start;
     align-items: start;
-    gap: 20px;
+    gap: var(--blocks-gap, 30px);
 }

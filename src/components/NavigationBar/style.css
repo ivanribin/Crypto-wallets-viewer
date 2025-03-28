@@ -3,7 +3,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    gap: var(--blocks-gap, 30px);
 }
 
 .navigation-item.active a{
@@ -11,11 +11,15 @@
     color: blue;
 }
 
-.burger-menu.navigation-items.inactive {
-    display: none;
+.burger-menu .navigation-items {
+    transition: var(--transition-time, .3s);
 }
 
-.burger-menu.navigation-items.active {
-    display: block;
+.burger-menu .navigation-items.default {
+    max-height: 0;
+}
+
+.burger-menu .navigation-items.open {
+    max-height: auto;
 }
 

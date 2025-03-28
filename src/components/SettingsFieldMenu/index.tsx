@@ -20,16 +20,19 @@ const SettingsFieldMenu = ({
     };
 
     return (
-        <div className="settings-field-container">
-            {valuesList.map((value) => (
-                <SettingsFieldButton
-                    key={value}
-                    value={value}
-                    selectedValue={selectedValue}
-                    label={getSettingLabelByValue(value)}
-                    setValue={setValue}
-                />
-            ))}
+        <div className="settings-field-menu">
+            <h2>{settingsFieldConfig.title}</h2>
+            <div className="fields">
+                {valuesList.map((value) => (
+                    <SettingsFieldButton
+                        key={value}
+                        value={value}
+                        selectedValue={selectedValue}
+                        label={getSettingLabelByValue(value)}
+                        setValue={setValue}
+                    />
+                ))}
+            </div>
         </div>
     );
 };

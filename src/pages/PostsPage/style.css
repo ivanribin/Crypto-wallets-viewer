@@ -1,7 +1,13 @@
-.main-container {
+.posts-page {
+    max-width: 800px;
+
+    margin: auto;
+
     display: flex;
     flex-direction: column;
-    justify-content: start;
-    align-items: start;
-    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    gap: var(--blocks-gap, 30px);
+
+    padding-top: var(--content-padding, 16px);
 }

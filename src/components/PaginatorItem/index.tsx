@@ -16,6 +16,7 @@ const PaginatorItem = ({
     ) : (
         <button
             className={`paginator-button ${data.selectClass}`}
+            title={data.info}
             onClick={onClick}
         >
             {data.info}

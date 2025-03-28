@@ -42,17 +42,16 @@ const Paginator = ({
 
     return (
         <div className="paginator">
-            <div>
                 <button
-                    className="paginator-arrow"
+                    className="arrow paginator-button"
+                    title={PaginatorFieldsTexts.PREVIOUS_PAGE_SYMBOL}
                     onClick={setPreviousPage}
                     disabled={buttonsDisable.previousPage}
                 >
                     {PaginatorFieldsTexts.PREVIOUS_PAGE_SYMBOL}
                 </button>
-            </div>
 
-            <div className="paginator-items">
+            <div className="items-container">
                 {paginatorItemsList.map((itemData, index) => (
                     <PaginatorItem
                         key={index}
@@ -62,15 +61,14 @@ const Paginator = ({
                 ))}
             </div>
 
-            <div>
                 <button
-                    className="paginator-arrow"
+                    className="arrow paginator-button"
+                    title={PaginatorFieldsTexts.NEXT_PAGE_SYMBOl}
                     onClick={setNextPage}
                     disabled={buttonsDisable.nextPage}
                 >
                     {PaginatorFieldsTexts.NEXT_PAGE_SYMBOl}
                 </button>
-            </div>
         </div>
     );
 };
