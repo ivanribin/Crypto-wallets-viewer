@@ -1,7 +1,6 @@
 import { type ReactElement } from "react";
 import { useDispatch } from "react-redux";
 import { SettingsFieldButtonStyles } from "./meta";
-import "./style.css";
 
 export interface ISettingsFieldButtonProps {
     value: string;
@@ -26,6 +25,7 @@ const SettingsFieldButton = ({
     return (
         <button
             className={`menu-button ${buttonStyle}`}
+            title={label}
             onClick={() => {
                 dispatch(setValue(value));
             }}

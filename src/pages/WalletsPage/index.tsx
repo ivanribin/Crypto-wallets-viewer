@@ -29,7 +29,7 @@ const WalletsPage = (): ReactElement => {
     } = useCardanoHook();
 
     return (
-        <div>
+        <div className="wallets-page">
             <WalletsPageChapter
                 connectFunction={connectEthereumWallet}
                 textData={ethereumWalletChapterTexts}

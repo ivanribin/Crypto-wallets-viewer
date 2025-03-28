@@ -1,4 +1,4 @@
-.main-container {
+.posts-page {
     max-width: 800px;
 
     margin: auto;
@@ -7,5 +7,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: var(--blocks-gap, 30px);
+
+    padding-top: var(--content-padding, 16px);
 }

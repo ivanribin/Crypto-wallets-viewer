@@ -1,20 +1,13 @@
-.settings {
+.settings-page {
     max-width: 800px;
 
     margin: auto;
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-}
-
-.settings .fields {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-start;
+    gap: var(--blocks-gap, 30px);
 
-    gap: 30px;
+    padding-top: var(--content-padding, 16px);
 }

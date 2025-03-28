@@ -19,6 +19,7 @@
     --default-shadow: 0 0 4px 0 var(--default-shadow-color);
     --navbar-height: 75px;
     --content-padding: 16px;
+    --blocks-gap: 30px;
 
     --transition-time: .3s;
 }
@@ -33,14 +34,28 @@ div.application-container {
     min-height: 100vh;
 }
 
+h2 {
+    margin: 0;
+}
+
 button {
     transition: var(--transition-time);
     border: 1px solid;
     border-radius: 5px;
 
+    width: 120px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+
     padding: 10px;
 
     user-select: none;
+}
+
+button.paginator-button {
+    width: 50px;
 }
 
 button.select {
@@ -49,6 +64,14 @@ button.select {
 
 button:hover {
     cursor: pointer;
+}
+
+input {
+    width: 100%;
+    border: 2px solid;
+    border-radius: 5px;
+
+    padding: 10px;
 }
 
 .application-container.light,
@@ -61,6 +84,10 @@ button:hover {
 }
 
 .application-container.light div {
+    border-color: var(--aswad-black-color);
+}
+
+.application-container.light input {
     border-color: var(--aswad-black-color);
 }
 
@@ -166,31 +193,38 @@ button:hover {
 }
 
 .application-container.arial,
-.application-container.arial button {
+.application-container.arial button,
+.application-container.arial input {
+
     font-family: Arial, Helvetica, sans-serif;
 }
 
 .application-container.georgia,
-.application-container.georgia button {
+.application-container.georgia button,
+.application-container.georgia input {
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .application-container.courier-new,
-.application-container.courier-new button {
+.application-container.courier-new button,
+.application-container.courier-new input {
     font-family: 'Courier New', Courier, monospace;
 }
 
 .application-container.small-font,
-.application-container.small-font button {
-    font-size: 14px;
+.application-container.small-font button,
+.application-container.small-font input {
+    font-size: 10px;
 }
 
 .application-container.medium-font,
-.application-container.medium-font button {
-    font-size: 18px;
+.application-container.medium-font button,
+.application-container.medium-font input {
+    font-size: 12px;
 }
 
 .application-container.large-font,
-.application-container.large-font button {
-    font-size: 22px;
+.application-container.large-font button,
+.application-container.large-font input {
+    font-size: 14px;
 }

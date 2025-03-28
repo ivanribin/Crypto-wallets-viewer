@@ -16,16 +16,13 @@ const SettingsPage = (): ReactElement => {
         SettingsService.getSettingsConfig(applicationState);
 
     return (
-        <div className="settings">
-            <h1>Settings</h1>
-            <div className="fields">
+        <div className="settings-page">
                 {settingsConfig.map((settingsField) => (
                     <SettingsFieldMenu
                         key={settingsField.id}
                         settingsFieldConfig={settingsField}
                     />
                 ))}
-            </div>
         </div>
     );
 };

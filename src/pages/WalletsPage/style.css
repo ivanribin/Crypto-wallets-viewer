@@ -1,0 +1,13 @@
+.wallets-page {
+    max-width: 800px;
+
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: var(--blocks-gap, 30px);
+
+    padding-top: var(--content-padding, 16px);
+}

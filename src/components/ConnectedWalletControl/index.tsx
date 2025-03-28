@@ -24,12 +24,22 @@ const ConnectedWalletControl = ({
 
     return (
         <div className="connected-wallet-control">
-            <p className="address">{ConnectedWalletTexts.ADDRESS + activeWalletAddress}</p>
+            <p className="address">
+                {ConnectedWalletTexts.ADDRESS + activeWalletAddress}
+            </p>
             <div className="control-panel">
-                <button className={"control"} onClick={copyActiveWalletAddress}>
+                <button
+                    className={"control"}
+                    title={ConnectedWalletTexts.ADDRESS_COPY_BUTTON_TEXT}
+                    onClick={copyActiveWalletAddress}
+                >
                     {ConnectedWalletTexts.ADDRESS_COPY_BUTTON_TEXT}
                 </button>
-                <button className={"control"} onClick={deleteWallet}>
+                <button
+                    className={"control"}
+                    title={ConnectedWalletTexts.DELETE_WALLET_BUTTON_TEXT}
+                    onClick={deleteWallet}
+                >
                     {ConnectedWalletTexts.DELETE_WALLET_BUTTON_TEXT}
                 </button>
             </div>

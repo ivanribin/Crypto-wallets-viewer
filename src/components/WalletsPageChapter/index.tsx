@@ -23,7 +23,9 @@ const WalletsPageChapter = ({
         <div>
             <h2>{title}</h2>
             {!activeWalletAddress ? (
-                <button onClick={connectFunction}>{connectButtonText}</button>
+                <button title={connectButtonText} onClick={connectFunction}>
+                    {connectButtonText}
+                </button>
             ) : (
                 <ConnectedWalletControl
                     activeWalletAddress={activeWalletAddress}

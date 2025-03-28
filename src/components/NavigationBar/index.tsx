@@ -47,7 +47,7 @@ const NavigationBar = (): ReactElement => {
         </div>
     ) : (
         <div className="navigation-bar burger-menu">
-            <button className="open-button" onClick={changeBurgerMenuVisible}>Open</button>
+            <button className="open-button" title={"Open"} onClick={changeBurgerMenuVisible}>Open</button>
             <div className={`navigation-items ${burgerMenuItemsClass}`}>
                 {navigationItems.map((item: INavigationItem) => {
                     const itemClass: string = item.isCurrent

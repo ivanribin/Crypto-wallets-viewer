@@ -15,13 +15,15 @@ const PostsPage = (): ReactElement => {
     } = useListFilter();
 
     return (
-        <div className="posts-page main-container">
+        <div className="posts-page">
             <Search setQuery={setQuery} />
-            <Paginator
-                currentNumber={pageNumber}
-                totalPageNumber={totalPageNumber}
-                changePageNumber={setPageNumber}
-            />
+            {listShowPath.length !== 0 && (
+                <Paginator
+                    currentNumber={pageNumber}
+                    totalPageNumber={totalPageNumber}
+                    changePageNumber={setPageNumber}
+                />
+            )}
             <Posts postsList={listShowPath} />
         </div>
     );

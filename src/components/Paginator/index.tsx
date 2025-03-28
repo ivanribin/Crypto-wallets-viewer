@@ -43,7 +43,8 @@ const Paginator = ({
     return (
         <div className="paginator">
                 <button
-                    className="arrow"
+                    className="arrow paginator-button"
+                    title={PaginatorFieldsTexts.PREVIOUS_PAGE_SYMBOL}
                     onClick={setPreviousPage}
                     disabled={buttonsDisable.previousPage}
                 >
@@ -61,7 +62,8 @@ const Paginator = ({
             </div>
 
                 <button
-                    className="arrow"
+                    className="arrow paginator-button"
+                    title={PaginatorFieldsTexts.NEXT_PAGE_SYMBOl}
                     onClick={setNextPage}
                     disabled={buttonsDisable.nextPage}
                 >
