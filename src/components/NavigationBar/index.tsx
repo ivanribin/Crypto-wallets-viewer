@@ -1,68 +1,44 @@
 import useNavigation from "@hooks/useNavigation";
-import useWindowResizeObserver from "@hooks/WindowResizeObserver";
-import NavigationItems from "@components/NavigationItems";
 import { useNavigate } from "react-router";
-import { SelectButtonStyles } from "@utils/constants";
-import { type ReactElement, useState } from "react";
+import { NavigationItemClasses } from "@components/NavigationItems";
+import { type ReactElement } from "react";
+import { type INavigationItem } from "@hooks/useNavigation/meta";
+import "./style.css";
 
-export const NAVBAR_MINIMUM_DEFAULT_WINDOW_WIDTH: number = 1280;
-
-export const enum NavigationItemsClasses {
-    DEFAULT = "default",
-    BURGER = "burger",
+export interface INavigationBarProps {
+    flexDirection: string;
 }
 
-const NavigationBar = (): ReactElement => {
+const NavigationBar = ({flexDirection}: INavigationBarProps): ReactElement => {
     const navigate = useNavigate();
 
     const { navigationItems } = useNavigation();
-
-    console.log(navigationItems);
-
-    const { windowWidth } = useWindowResizeObserver();
-    const [isItemsVisible, setIsItemsVisible] = useState<boolean>(false);
-
-    const isBurgerType: boolean =
-        windowWidth < NAVBAR_MINIMUM_DEFAULT_WINDOW_WIDTH;
-
-    const changeItemsVisible = (): void => {
-        setIsItemsVisible(!isItemsVisible);
-    };
 
     const goToPage = (path: string): void => {
         navigate(path);
     };
 
-    const getItemsClass = (): string => {
-        return isBurgerType
-            ? NavigationItemsClasses.BURGER
-            : NavigationItemsClasses.DEFAULT;
-    };
-
-    const getOpenButtonClass = (): string => {
-        return isItemsVisible
-            ? SelectButtonStyles.SELECT
-            : SelectButtonStyles.UNSELECT;
+    const getItemActiveClass = (isCurrent: boolean): string => {
+        return isCurrent
+            ? NavigationItemClasses.ACTIVE
+            : NavigationItemClasses.INACTIVE;
     };
 
     return (
         <div className="navigation-bar">
-            {isBurgerType && (
-                <button
-                    className={`open-button ${getOpenButtonClass()}`}
-                    title={"Open"}
-                    onClick={changeItemsVisible}
-                >
-                    Open
-                </button>
-            )}
-            {(isItemsVisible || !isBurgerType) && (
-                <NavigationItems
-                    items={navigationItems}
-                    type={getItemsClass()}
-                    goToPage={goToPage}
-                />
-            )}
+            <div className={`items-list ${flexDirection}`}>
+                {navigationItems.map((item: INavigationItem) => (
+                    <div
+                        key={item.name}
+                        className={`item ${getItemActiveClass(item.isCurrent)}`}
+                        onClick={() => {
+                            goToPage(item.path);
+                        }}
+                    >
+                        {item.name}
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };

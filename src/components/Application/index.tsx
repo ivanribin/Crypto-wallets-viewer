@@ -29,8 +29,8 @@ const Application = (): ReactElement => {
             <RouterProvider>
                 <DefaultLayout>
                     <ApplicationRouter />
-                    {isLoading && <FullScreenLoader />}
                 </DefaultLayout>
+                {isLoading && <FullScreenLoader />}
             </RouterProvider>
         </div>
     );

@@ -16,10 +16,12 @@
     --medium-violet-color: #8e44ad;
     --soft-violet-color: #5c366d;
 
-    --default-shadow: 0 0 4px 0 var(--default-shadow-color);
     --navbar-height: 75px;
     --content-padding: 30px;
     --blocks-gap: 30px;
+    --aside-width: 200px;
+    --aside-translate: -150px;
+    --page-width: 800px;
 
     --transition-time: .3s;
 }
@@ -30,30 +32,12 @@
     box-sizing: border-box;
 }
 
-div.application-container {
-    min-height: 100vh;
-}
-
 div.info {
     border: 2px solid;
     padding: 20px;
     border-radius: 20px;
 
     width: 100%;
-}
-
-header {
-    z-index: 2;
-    position: fixed;
-    width: 100%;
-
-    top: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    margin: auto;
 }
 
 h2 {
@@ -105,6 +89,11 @@ input {
     background-color: var(--errigal-white-color);
 }
 
+.application-container.light aside,
+.application-container.light header {
+    background-color: var(--gainsboro-color);
+}
+
 .application-container.light div.info {
     border-color: var(--aswad-black-color);
 }
@@ -147,6 +136,11 @@ input {
     background-color: var(--aswad-black-color);
 }
 
+.application-container.dark aside,
+.application-container.dark header {
+    background-color: var(--astrogranite-debris-color);
+}
+
 .application-container.dark div.info {
     border-color: var(--errigal-white-color);
 }
@@ -183,6 +177,11 @@ input {
 .application-container.purple h3 {
     color: var(--white-color);
     background-color: var(--dark-violet-color);
+}
+
+.application-container.purple aside,
+.application-container.purple header {
+    background-color: var(--light-violet-color);
 }
 
 .application-container.purple div.info {

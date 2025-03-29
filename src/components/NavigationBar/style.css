@@ -1,0 +1,21 @@
+.navigation-bar .items-list {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navigation-bar .items-list.column {
+    flex-direction: column;
+}
+
+.navigation-bar .items-list .item {
+    user-select: none;
+
+    padding: 10px;
+}
+
+.navigation-bar .items-list .item:hover {
+    cursor: pointer;
+}

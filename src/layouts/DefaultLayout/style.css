@@ -1,11 +1,52 @@
-.content-container {
-    --content-width: var(--content-width-desktop, 1100px);
-    max-width: var(--content-width);
+header {
+    z-index: 2;
+    position: sticky;
+
+    width: var(--page-width, 800px);
+
     margin: auto;
+
+    border-radius: 0 0 20px 20px;
 }
 
-main {
-    min-height: 100vh;
-    padding: var(--content-padding, 16px);
-    padding-top: var(--navbar-height, 75px);
+aside {
+    z-index: 3;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    width: var(--aside-width, 500px);
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    transition: transform var(--transition-time, .3s);
+}
+
+aside .aside-content {
+    width: 100%;
+}
+
+aside.close {
+    transform: translateX(var(--aside-translate, 450px));
+}
+
+aside.open {
+    transform: translateX(0);
+}
+
+.default-layout .content-container {
+    padding-bottom: 75px;
+}
+
+.content-container.hidden {
+    user-select: none;
+    filter: blur(2px);
+}
+
+.content-container.hidden * {
+    pointer-events: none;
 }
