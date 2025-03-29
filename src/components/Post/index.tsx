@@ -9,7 +9,7 @@ export interface IPostProps {
 const Post = ({ postData }: IPostProps): ReactElement => {
     const { userId, id, title, body } = postData;
 
-    return <div className="post-container">
+    return <div className="post-container info">
         <div className="post user-id">
             <h2>User ID</h2>
             {userId}

@@ -24,7 +24,7 @@ const ConnectedWalletControl = ({
 
     return (
         <div className="connected-wallet-control">
-            <p className="address">
+            <p className="address" title={activeWalletAddress}>
                 {ConnectedWalletTexts.ADDRESS + activeWalletAddress}
             </p>
             <div className="control-panel">

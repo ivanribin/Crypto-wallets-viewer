@@ -34,6 +34,11 @@ export const enum WalletConnectMessages {
     CONNECT_ERROR = "Error on connectWallet: ",
 }
 
+export const enum SelectButtonStyles {
+    SELECT = "select",
+    UNSELECT = "unselect",
+}
+
 export const getPaginatorButtonSelectClass = (isSelect: boolean): string => {
     return isSelect ? PaginatorButtonSelectClasses.SELECT : PaginatorButtonSelectClasses.UNSELECT;
 }

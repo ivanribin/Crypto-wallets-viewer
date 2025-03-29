@@ -20,7 +20,7 @@ const WalletsPageChapter = ({
     const { title, connectButtonText } = textData;
 
     return (
-        <div>
+        <div className="wallets-page-chapter info">
             <h2>{title}</h2>
             {!activeWalletAddress ? (
                 <button title={connectButtonText} onClick={connectFunction}>

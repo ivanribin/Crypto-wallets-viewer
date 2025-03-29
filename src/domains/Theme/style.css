@@ -18,7 +18,7 @@
 
     --default-shadow: 0 0 4px 0 var(--default-shadow-color);
     --navbar-height: 75px;
-    --content-padding: 16px;
+    --content-padding: 30px;
     --blocks-gap: 30px;
 
     --transition-time: .3s;
@@ -32,6 +32,28 @@
 
 div.application-container {
     min-height: 100vh;
+}
+
+div.info {
+    border: 2px solid;
+    padding: 20px;
+    border-radius: 20px;
+
+    width: 100%;
+}
+
+header {
+    z-index: 5;
+    position: fixed;
+    width: 100%;
+
+    top: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: auto;
 }
 
 h2 {
@@ -83,7 +105,7 @@ input {
     background-color: var(--errigal-white-color);
 }
 
-.application-container.light div {
+.application-container.light div.info {
     border-color: var(--aswad-black-color);
 }
 
@@ -91,7 +113,8 @@ input {
     border-color: var(--aswad-black-color);
 }
 
-.application-container.light button {
+.application-container.light button,
+.application-container.light .navigation-items {
     background-color: var(--errigal-white-color);
     color: var(--aswad-black-color);
 
@@ -113,23 +136,23 @@ input {
 }
 
 .application-container.light .loader {
-    border-top: 20px solid var(--errigal-white-color);
+    border-top: 20px solid var(--aswad-black-color);
 }
 
 .application-container.dark,
 .application-container.dark a,
 .application-container.dark h1,
-.application-container.dark h2,
-.application-container.dark h3  {
+.application-container.dark h3 {
     color: var(--white-color);
     background-color: var(--aswad-black-color);
 }
 
-.application-container.dark div {
+.application-container.dark div.info {
     border-color: var(--errigal-white-color);
 }
 
-.application-container.dark button {
+.application-container.dark button,
+.application-container.dark .navigation-items {
     background-color: var(--aswad-black-color);
     color: var(--errigal-white-color);
 
@@ -157,17 +180,17 @@ input {
 .application-container.purple,
 .application-container.purple a,
 .application-container.purple h1,
-.application-container.purple h2,
 .application-container.purple h3 {
     color: var(--white-color);
     background-color: var(--dark-violet-color);
 }
 
-.application-container.purple div {
+.application-container.purple div.info {
     border-color: #af7ac4;
 }
 
-.application-container.purple button {
+.application-container.purple button,
+.application-container.purple .navigation-items {
     background-color: var(--dark-violet-color);
     color: var(--errigal-white-color);
 
