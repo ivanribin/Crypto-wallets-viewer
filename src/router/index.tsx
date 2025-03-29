@@ -1,26 +1,20 @@
-import Header from "@components/Header";
-import applicationRoutes from "./routes";
+import routes from "./routes";
+import { Route, type RouteObject, Routes } from "react-router";
 import { type ReactElement } from "react";
-import {
-    Route,
-    Routes,
-    BrowserRouter as Router,
-    type RouteObject,
-} from "react-router-dom";
 
-const ApplicationRouter = (): ReactElement => (
-    <Router>
-        <Header />
+const ApplicationRouter = (): ReactElement => {
+    return (
         <Routes>
-            {applicationRoutes.map((route: RouteObject) => (
+            {routes.map((route: RouteObject) => (
                 <Route
+                    id={route.id}
                     key={route.id}
                     path={route.path}
                     element={route.element}
                 />
             ))}
         </Routes>
-    </Router>
-);
+    );
+};
 
 export default ApplicationRouter;
