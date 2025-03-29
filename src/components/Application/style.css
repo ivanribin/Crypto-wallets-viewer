@@ -1,6 +1,5 @@
 .application-container {
     padding: 0 150px;
     min-height: 100vh;
-    padding: var(--content-padding, 16px);
 }
 

@@ -1,5 +1,5 @@
 .wallets-page {
-    max-width: 800px;
+    max-width: var(--page-width, 800px);
 
     margin: auto;
 
