@@ -1,0 +1,22 @@
+.navigation-items.default {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navigation-items.burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.navigation-items .item {
+    user-select: none;
+
+    padding: 10px;
+}
+
+.navigation-items .item:hover {
+    cursor: pointer;
+}

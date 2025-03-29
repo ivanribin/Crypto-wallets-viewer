@@ -1,6 +1,6 @@
 import { type ReactElement } from "react";
 import { useDispatch } from "react-redux";
-import { SettingsFieldButtonStyles } from "./meta";
+import { SelectButtonStyles } from "@utils/constants";
 
 export interface ISettingsFieldButtonProps {
     value: string;
@@ -19,8 +19,8 @@ const SettingsFieldButton = ({
 
     const buttonStyle: string =
         selectedValue === value
-            ? SettingsFieldButtonStyles.SELECT
-            : SettingsFieldButtonStyles.UNSELECT;
+            ? SelectButtonStyles.SELECT
+            : SelectButtonStyles.UNSELECT;
 
     return (
         <button

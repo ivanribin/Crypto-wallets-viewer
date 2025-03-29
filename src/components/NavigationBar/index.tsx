@@ -1,69 +1,65 @@
 import useNavigation from "@hooks/useNavigation";
 import useWindowResizeObserver from "@hooks/WindowResizeObserver";
-import { Link } from "react-router-dom";
+import NavigationItems from "@components/NavigationItems";
+import { useNavigate } from "react-router-dom";
+import { SelectButtonStyles } from "@utils/constants";
 import { type ReactElement, useState } from "react";
-import { type INavigationItem } from "@hooks/useNavigation/meta";
-import "./style.css";
 
 export const NAVBAR_MINIMUM_DEFAULT_WINDOW_WIDTH: number = 1280;
 
-export const enum NavigationItemClasses {
-    ACTIVE = "active",
-    INACTIVE = "inactive",
-}
-
-export const enum BurgerMenuItemClasses {
+export const enum NavigationItemsClasses {
     DEFAULT = "default",
-    OPEN = "open",
+    BURGER = "burger",
 }
 
 const NavigationBar = (): ReactElement => {
+    const navigate = useNavigate();
+
     const { navigationItems } = useNavigation();
     const { windowWidth } = useWindowResizeObserver();
-    const [isBurgerMenuVisible, setIsBurgerMenuVisible] = useState<boolean>(false);
+    const [isItemsVisible, setIsItemsVisible] = useState<boolean>(false);
 
-    const burgerMenuItemsClass: string = isBurgerMenuVisible ? BurgerMenuItemClasses.DEFAULT : BurgerMenuItemClasses.OPEN;
+    const isBurgerType: boolean =
+        windowWidth < NAVBAR_MINIMUM_DEFAULT_WINDOW_WIDTH;
 
-    const changeBurgerMenuVisible = (): void => {
-        setIsBurgerMenuVisible(!isBurgerMenuVisible);
-    }
+    const changeItemsVisible = (): void => {
+        setIsItemsVisible(!isItemsVisible);
+    };
 
-    return windowWidth >= NAVBAR_MINIMUM_DEFAULT_WINDOW_WIDTH ? (
-        <div className="navigation-bar default">
-            {navigationItems.map((item: INavigationItem) => {
-                const itemClass: string = item.isCurrent
-                    ? NavigationItemClasses.ACTIVE
-                    : NavigationItemClasses.INACTIVE;
+    const goToPage = (path: string): void => {
+        navigate(path);
+    };
 
-                return (
-                    <div
-                        key={item.name}
-                        className={`navigation-item ${itemClass}`}
-                    >
-                        <Link to={item.path}>{item.name}</Link>
-                    </div>
-                );
-            })}
-        </div>
-    ) : (
-        <div className="navigation-bar burger-menu">
-            <button className="open-button" title={"Open"} onClick={changeBurgerMenuVisible}>Open</button>
-            <div className={`navigation-items ${burgerMenuItemsClass}`}>
-                {navigationItems.map((item: INavigationItem) => {
-                    const itemClass: string = item.isCurrent
-                        ? NavigationItemClasses.ACTIVE
-                        : NavigationItemClasses.INACTIVE;
+    const getItemsClass = (): string => {
+        return isBurgerType
+            ? NavigationItemsClasses.BURGER
+            : NavigationItemsClasses.DEFAULT;
+    };
 
-                    return (
-                        <div
-                            key={item.name}
-                            className={`navigation-item ${itemClass}`}
-                        >
-                            <Link to={item.path}>{item.name}</Link>
-                        </div>
-                    );
-                })}
-            </div>
+    const getOpenButtonClass = (): string => {
+        return isItemsVisible
+            ? SelectButtonStyles.SELECT
+            : SelectButtonStyles.UNSELECT;
+    };
+
+    return (
+        <div className="navigation-bar">
+            {isBurgerType && (
+                <button
+                    className={`open-button ${getOpenButtonClass()}`}
+                    title={"Open"}
+                    onClick={changeItemsVisible}
+                >
+                    Open
+                </button>
+            )}
+            {(isItemsVisible || !isBurgerType) && (
+                <NavigationItems
+                    items={navigationItems}
+                    type={getItemsClass()}
+                    goToPage={goToPage}
+                />
+            )}
         </div>
     );
 };

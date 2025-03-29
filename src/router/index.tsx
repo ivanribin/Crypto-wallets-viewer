@@ -1,4 +1,4 @@
-import NavigationBar from "@components/NavigationBar";
+import Header from "@components/Header";
 import applicationRoutes from "./routes";
 import { type ReactElement } from "react";
 import {
@@ -10,8 +10,7 @@ import {
 
 const ApplicationRouter = (): ReactElement => (
     <Router>
-        <NavigationBar />
-
+        <Header />
         <Routes>
             {applicationRoutes.map((route: RouteObject) => (
                 <Route
