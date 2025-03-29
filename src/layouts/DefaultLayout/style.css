@@ -1,0 +1,11 @@
+.content-container {
+    --content-width: var(--content-width-desktop, 1100px);
+    max-width: var(--content-width);
+    margin: auto;
+}
+
+main {
+    min-height: 100vh;
+    padding: var(--content-padding, 16px);
+    padding-top: var(--navbar-height, 75px);
+}

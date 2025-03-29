@@ -1,5 +1,7 @@
+import DefaultLayout from "@layouts/DefaultLayout";
 import ApplicationRouter from "@router/index";
 import FullScreenLoader from "@components/FullScreenLoader";
+import { BrowserRouter as RouterProvider } from "react-router";
 import { useSelector } from "react-redux";
 import { FontFamiliesKeys, fontFamiliesValuesMap } from "@styles/fontFamilies";
 import { ThemesKeys, themesValuesMap } from "@styles/theme";
@@ -24,8 +26,12 @@ const Application = (): ReactElement => {
         <div
             className={`application-container ${themeClass} ${fontFamilyClass} ${fontSizeClass}`}
         >
-            <ApplicationRouter />
-            {isLoading && <FullScreenLoader />}
+            <RouterProvider>
+                <DefaultLayout>
+                    <ApplicationRouter />
+                    {isLoading && <FullScreenLoader />}
+                </DefaultLayout>
+            </RouterProvider>
         </div>
     );
 };

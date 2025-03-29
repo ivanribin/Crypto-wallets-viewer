@@ -1,7 +1,7 @@
 import useNavigation from "@hooks/useNavigation";
 import useWindowResizeObserver from "@hooks/WindowResizeObserver";
 import NavigationItems from "@components/NavigationItems";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { SelectButtonStyles } from "@utils/constants";
 import { type ReactElement, useState } from "react";
 
@@ -16,6 +16,9 @@ const NavigationBar = (): ReactElement => {
     const navigate = useNavigate();
 
     const { navigationItems } = useNavigation();
+
+    console.log(navigationItems);
+
     const { windowWidth } = useWindowResizeObserver();
     const [isItemsVisible, setIsItemsVisible] = useState<boolean>(false);
 
