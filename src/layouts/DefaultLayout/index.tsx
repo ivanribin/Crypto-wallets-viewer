@@ -39,7 +39,7 @@ const DefaultLayout = ({ children }: IDefaultLayoutProps): ReactElement => {
     const asideHeaderIconId: string = !isAsideOpen
         ? AsideHeaderSvgIconsIds.BURGER_MENU_CLOSE
         : AsideHeaderSvgIconsIds.BURGER_MENU_OPEN;
-    const contentContainerClass: string = !isAsideOpen
+    const contentContainerClass: string = !isAsideOpen || !isBurgerNavigation
         ? ContentContainerClasses.VISIBLE
         : ContentContainerClasses.HIDDEN;
 
