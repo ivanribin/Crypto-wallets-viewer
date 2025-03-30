@@ -1,18 +1,23 @@
 import { useEffect, useState } from "react";
-import { type TWalletAddress } from "@pages/WalletsPage/meta";
 import { WalletConnectMessages } from "@utils/constants";
 import { setIsLoading } from "@store/slices/Application";
+import { type IWalletData } from "@pages/WalletsPage/meta";
 
 export type TEthereumMethod = string;
 
 export const GET_ETHERIUIM_ACCOUNTS_METHOD: TEthereumMethod = "eth_requestAccounts";
+export const GET_ETHERIUM_ACCOUNT_BALANCE_METHOD: TEthereumMethod = "eth_getBalance";
 export const ETHEREUM_EXTENSION_IDENTIFIER = "metamask";
 
 const useEthereumHook = () => {
-  const [ethereumAccountAddress, setEthereumAccountAddress] =
-    useState<TWalletAddress>(null);
+  const [ethereumAccountData, setEthereumAccountData] =
+    useState<IWalletData | null>(null);
 
   const ethereum = window?.ethereum;
+
+  const clearEthereumAccountData = (): void => {
+    setEthereumAccountData(null);
+  }
 
   const connectEthereumWallet = async () => {
     try {
@@ -34,7 +39,18 @@ const useEthereumHook = () => {
 
       const address = accounts[0];
 
-      setEthereumAccountAddress(address);
+      const balance = await window.ethereum.request({
+        method: GET_ETHERIUM_ACCOUNT_BALANCE_METHOD,
+        params: [
+          address,
+          "latest",
+        ]
+      })
+
+      setEthereumAccountData({
+        address: address,
+        balance: balance,
+      })
     } catch (error) {
       console.error(WalletConnectMessages.CONNECT_ERROR, error);
       throw error;
@@ -48,8 +64,8 @@ const useEthereumHook = () => {
   }, [])
 
   return {
-    ethereumAccountAddress,
-    setEthereumAccountAddress,
+    ethereumAccountData,
+    clearEthereumAccountData,
     connectEthereumWallet,
   }
 }

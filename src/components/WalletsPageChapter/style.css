@@ -1,3 +1,16 @@
 .wallets-page-chapter h2 {
-    margin-bottom: 30px;
+    padding-bottom: var(--content-padding, 30px);
+}
+
+.wallets-page-chapter .wallet .data {
+    padding-bottom: var(--content-padding, 30px);
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.wallets-page-chapter .wallet .data p {
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

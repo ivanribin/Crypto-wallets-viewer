@@ -1,8 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
 import { type IConnectedWalletTexts } from "@components/WalletsPageChapter/meta";
-
-export type TWalletAddress = string | null;
-export type TChangeWalletAddress = Dispatch<SetStateAction<TWalletAddress>>;
 
 export const enum WalletChaptersTexts {
     ETHEREUM_WALLET_TITLE = "Your Ethereum Wallet",
@@ -19,4 +15,9 @@ export const ethereumWalletChapterTexts: IConnectedWalletTexts = {
 export const cardanoWalletChapterTexts: IConnectedWalletTexts = {
     title: WalletChaptersTexts.CARDANO_WALLET_TITLE,
     connectButtonText: WalletChaptersTexts.CARDANO_CONNECT_BUTTON_TEXT,
+}
+
+export interface IWalletData {
+    address: string;
+    balance: string;
 }

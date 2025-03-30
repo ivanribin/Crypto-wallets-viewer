@@ -1,36 +1,58 @@
 import ConnectedWalletControl from "../ConnectedWalletControl";
-import { Dispatch, SetStateAction, type ReactElement } from "react";
-import { type TWalletAddress } from "@pages/WalletsPage/meta";
-import { type IConnectedWalletTexts } from "./meta";
+import {
+    ConnectedWalletMessages,
+    ConnectedWalletTexts,
+    type IConnectedWalletTexts,
+} from "./meta";
+import { type ReactElement } from "react";
+import { type IWalletData } from "@pages/WalletsPage/meta";
 import "./style.css";
 
-export interface IConnectedWallet {
+export interface IWalletsPageChapterProps {
     connectFunction: any;
     textData: IConnectedWalletTexts;
-    activeWalletAddress: TWalletAddress;
-    changeWalletAddress: Dispatch<SetStateAction<TWalletAddress>>;
+    walletData: IWalletData | null;
+    clearWalletData: () => void;
 }
 
 const WalletsPageChapter = ({
     connectFunction,
     textData,
-    activeWalletAddress,
-    changeWalletAddress,
-}: IConnectedWallet): ReactElement => {
+    walletData,
+    clearWalletData,
+}: IWalletsPageChapterProps): ReactElement => {
     const { title, connectButtonText } = textData;
+
+    const copyActiveWalletAddress = (walletAddress: string): void => {
+        navigator.clipboard.writeText(walletAddress);
+
+        alert(ConnectedWalletMessages.ADDRESS_COPY_TO_CLIPBOARD);
+    };
 
     return (
         <div className="wallets-page-chapter info">
             <h2>{title}</h2>
-            {!activeWalletAddress ? (
+            {!walletData ? (
                 <button title={connectButtonText} onClick={connectFunction}>
                     {connectButtonText}
                 </button>
             ) : (
-                <ConnectedWalletControl
-                    activeWalletAddress={activeWalletAddress}
-                    changeWalletAddress={changeWalletAddress}
-                />
+                <div className="wallet">
+                    <div className="data">
+                        <p className="address" title={walletData.address}>
+                            {ConnectedWalletTexts.ADDRESS + walletData.address}
+                        </p>
+                        <p className="balance" title={walletData.balance}>
+                            {ConnectedWalletTexts.BALANCE + walletData.balance}
+                        </p>
+                    </div>
+                    <ConnectedWalletControl
+                        copyAddress={() => {
+                            copyActiveWalletAddress(walletData.address);
+                        }}
+                        clearWalletData={clearWalletData}
+                    />
+                </div>
             )}
         </div>
     );

@@ -1,44 +1,30 @@
+import { ConnectedWalletTexts } from "./meta";
 import { type ReactElement } from "react";
-import { ConnectedWalletMessages, ConnectedWalletTexts } from "./meta";
-import { type TChangeWalletAddress } from "@pages/WalletsPage/meta";
 import "./style.css";
 
 export interface IConnectedWalletControlProps {
-    activeWalletAddress: string;
-    changeWalletAddress: TChangeWalletAddress;
+    copyAddress: () => void;
+    clearWalletData: () => void;
 }
 
 const ConnectedWalletControl = ({
-    activeWalletAddress,
-    changeWalletAddress,
+    copyAddress,
+    clearWalletData,
 }: IConnectedWalletControlProps): ReactElement => {
-    const copyActiveWalletAddress = (): void => {
-        navigator.clipboard.writeText(activeWalletAddress);
-
-        alert(ConnectedWalletMessages.ADDRESS_COPY_TO_CLIPBOARD);
-    };
-
-    const deleteWallet = (): void => {
-        changeWalletAddress(null);
-    };
-
     return (
         <div className="connected-wallet-control">
-            <p className="address" title={activeWalletAddress}>
-                {ConnectedWalletTexts.ADDRESS + activeWalletAddress}
-            </p>
             <div className="control-panel">
                 <button
                     className={"control"}
                     title={ConnectedWalletTexts.ADDRESS_COPY_BUTTON_TEXT}
-                    onClick={copyActiveWalletAddress}
+                    onClick={copyAddress}
                 >
                     {ConnectedWalletTexts.ADDRESS_COPY_BUTTON_TEXT}
                 </button>
                 <button
                     className={"control"}
                     title={ConnectedWalletTexts.DELETE_WALLET_BUTTON_TEXT}
-                    onClick={deleteWallet}
+                    onClick={clearWalletData}
                 >
                     {ConnectedWalletTexts.DELETE_WALLET_BUTTON_TEXT}
                 </button>

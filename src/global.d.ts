@@ -5,5 +5,4 @@ interface Window {
 	cardano: {
 		lace: any;
 	}
-
 };

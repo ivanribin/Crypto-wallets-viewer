@@ -1,18 +1,22 @@
 import { useEffect, useState } from "react";
-import { type TWalletAddress } from "@pages/WalletsPage/meta";
 import { WalletConnectMessages, decodeAddress } from "@utils/constants";
 import { setIsLoading } from "@store/slices/Application";
 import { useDispatch } from "react-redux";
+import { type IWalletData } from "@pages/WalletsPage/meta";
 
 export const CARDANO_EXTENSION_IDENTIFIER = "lace";
 
 const useCardanoHook = () => {
   const dispatch = useDispatch();
 
-  const [cardanoMaskAccountAddress, setCardanoMaskAccountAddress] =
-    useState<TWalletAddress>(null);
+  const [cardanoAccountData, setCardanoAccountData] =
+    useState<IWalletData | null>(null);
 
   const cardano = window?.cardano;
+
+  const clearCardanoAccountData = (): void => {
+    setCardanoAccountData(null);
+  }
 
   const connectCardanoWallet = async () => {
     try {
@@ -34,8 +38,12 @@ const useCardanoHook = () => {
 
       const address = decodeAddress(encodedAddresses);
 
-      setCardanoMaskAccountAddress(address);
+      const balance = await wallet.getBalance();
 
+      setCardanoAccountData({
+        address: address,
+        balance: balance,
+      })
     } catch (error) {
       console.error(WalletConnectMessages.CONNECT_ERROR, error);
       throw error;
@@ -49,8 +57,8 @@ const useCardanoHook = () => {
   }, [])
 
   return {
-    cardanoMaskAccountAddress,
-    setCardanoMaskAccountAddress,
+    cardanoAccountData,
+    clearCardanoAccountData,
     connectCardanoWallet,
   }
 }
