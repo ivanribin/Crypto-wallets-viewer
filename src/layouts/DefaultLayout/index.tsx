@@ -1,17 +1,13 @@
 import AsideHeader from "@components/AsideHeader";
 import useWindowResizeObserver from "@hooks/WindowResizeObserver";
 import NavigationBar from "@components/NavigationBar";
+import { SvgSpriteIconIds } from "@utils/constants";
 import { type ReactNode, type ReactElement, useState } from "react";
 import "./style.css";
 
 export const enum AsideClasses {
     OPEN = "open",
     CLOSE = "close",
-}
-
-export const enum AsideHeaderSvgIconsIds {
-    BURGER_MENU_CLOSE = "burger-menu-close",
-    BURGER_MENU_OPEN = "burger-menu-open",
 }
 
 export const enum ContentContainerClasses {
@@ -37,8 +33,8 @@ const DefaultLayout = ({ children }: IDefaultLayoutProps): ReactElement => {
         ? AsideClasses.CLOSE
         : AsideClasses.OPEN;
     const asideHeaderIconId: string = !isAsideOpen
-        ? AsideHeaderSvgIconsIds.BURGER_MENU_CLOSE
-        : AsideHeaderSvgIconsIds.BURGER_MENU_OPEN;
+        ? SvgSpriteIconIds.BURGER_MENU_CLOSE
+        : SvgSpriteIconIds.BURGER_MENU_OPEN;
     const contentContainerClass: string =
         !isAsideOpen || !isBurgerNavigation
             ? ContentContainerClasses.VISIBLE

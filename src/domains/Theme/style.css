@@ -87,7 +87,8 @@ input {
 .application-container.light aside,
 .application-container.light header,
 .application-container.light div.info,
-.application-container.light div.info h2 {
+.application-container.light div.info h2,
+.application-container.light .not-found-page .icon {
     background-color: var(--gainsboro-color);
 }
 
@@ -137,7 +138,8 @@ input {
 .application-container.dark aside,
 .application-container.dark header,
 .application-container.dark div.info,
-.application-container.dark div.info h2 {
+.application-container.dark div.info h2,
+.application-container.dark .not-found-page .icon {
     background-color: var(--astrogranite-debris-color);
 }
 
@@ -183,7 +185,8 @@ input {
 .application-container.purple aside,
 .application-container.purple header,
 .application-container.purple div.info,
-.application-container.purple div.info h2 {
+.application-container.purple div.info h2,
+.application-container.purple .not-found-page .icon {
     background-color: var(--soft-violet-color);
 }
 
