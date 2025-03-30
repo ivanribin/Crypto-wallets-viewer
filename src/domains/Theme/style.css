@@ -1,19 +1,10 @@
 :root {
-    --dryad-bark-color: #37352f;
-    --white-color: #ffffff;
     --errigal-white-color: #f6f6f9;
     --gainsboro-color: #d9d9d9;
-    --coral-red-color: #f93e3d;
-    --translucent-unicorn-color: #fcecee;
-    --soft-petals-color: #e9f6ef;
-    --vegetation-color: #48cd90;
-    --stonewall-grey-color: #c3c2c1;
     --astrogranite-debris-color: #3b414a;
     --aswad-black-color: #141519;
-    --washed-black-color: #202528;
     --dark-violet-color: #251531;
     --light-violet-color: #c767ed;
-    --medium-violet-color: #8e44ad;
     --soft-violet-color: #845b97;
 
     --navbar-height: 75px;
@@ -87,7 +78,7 @@ input {
 .application-container.light h2,
 .application-container.light h3,
 .application-container.light .navigation-bar .items-list .item.active {
-    color: var(--dryad-bark-color);
+    color: var(--aswad-black-color);
     background-color: var(--errigal-white-color);
 }
 
@@ -137,7 +128,7 @@ input {
 .application-container.dark h1,
 .application-container.dark h3,
 .application-container.dark .navigation-bar .items-list .item.active {
-    color: var(--white-color);
+    color: var(--errigal-white-color);
     background-color: var(--aswad-black-color);
 }
 
@@ -183,7 +174,7 @@ input {
 .application-container.purple h1,
 .application-container.purple h3,
 .application-container.purple .navigation-bar .items-list .item.active {
-    color: var(--white-color);
+    color: var(--errigal-white-color);
     background-color: var(--dark-violet-color);
 }
 
