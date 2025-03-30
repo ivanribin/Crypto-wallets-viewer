@@ -1,9 +1,9 @@
-import { SettingsConfigKeys, settingsConfigTitles, type TSettingsConfig } from "@pages/SettingsPage/meta";
 import { setTheme, setFontFamily, setFontSize, setLoadPostsCount, setIsCardanoActive } from "@store/slices/Application";
 import { fontFamiliesLabelsMap } from "@styles/fontFamilies";
 import { themesLabelsMap } from "@styles/theme";
 import { fontSizesLabelsMap } from "@styles/fontSizes";
 import { cardanoStatesLabelsMap, countsLoadPostsLabelsMap, type IApplicationSliceState } from "@store/slices/Application/meta";
+import { SettingsConfigKeys, settingsConfigTitles, type TSettingsConfig } from "./meta";
 
 export class SettingsService {
     public static getSettingsConfig(currentApplicationState: IApplicationSliceState): TSettingsConfig {

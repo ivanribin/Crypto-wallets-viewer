@@ -1,22 +1,28 @@
 import Paginator from "@components/Paginator";
 import Posts from "@components/Posts";
-import Search from "@components/Search";
 import useListFilter from "@hooks/useListFilter";
+import SearchBlock from "@components/SearchBlock";
 import { type ReactElement } from "react";
 import "./style.css";
 
 const PostsPage = (): ReactElement => {
     const {
-        setQuery,
+        query,
+        updateQuery,
         pageNumber,
         setPageNumber,
         totalPageNumber,
         listShowPath,
+        loadPostsBySearch,
     } = useListFilter();
 
     return (
         <div className="posts-page">
-            <Search setQuery={setQuery} />
+            <SearchBlock
+                query={query}
+                setQuery={updateQuery}
+                loadPostsBySearch={loadPostsBySearch}
+            />
             {listShowPath.length !== 0 && (
                 <Paginator
                     currentNumber={pageNumber}

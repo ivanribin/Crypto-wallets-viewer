@@ -1,3 +1,5 @@
+import { SettingsConfigKeys } from "@services/SettingsService/meta";
+
 export interface IApplicationSliceState {
     theme: string;
     fontFamily: string;
@@ -43,4 +45,16 @@ export const cardanoStatesValuesMap: { [key in CardanoStatesKeys]: TCardanoState
     "active": true,
     "inactive": false,
 };
+
+export enum LocalStorageKeys {
+    THEME = "theme",
+    FONT_FAMILY = "fontFamily",
+    FONT_SIZE = "fontSize",
+    LOAD_POSTS_COUNT = "loadPostsCount",
+    IS_CARDANO_ACTIVE = "isCardanoActive",
+    IS_LOADING = "isLoading",
+    POSTS_QUERY = "postsQuery",
+}
+
+export const settingsFieldsIdList = Object.values(SettingsConfigKeys);
 

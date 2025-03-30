@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { type ReactElement } from "react";
 import { type TRootState } from "@store/index";
 import { type IApplicationSliceState } from "@store/slices/Application/meta";
-import { type TSettingsConfig } from "./meta";
+import { type TSettingsConfig } from "@services/SettingsService/meta";
 import "./style.css";
 
 const SettingsPage = (): ReactElement => {
@@ -17,12 +17,12 @@ const SettingsPage = (): ReactElement => {
 
     return (
         <div className="settings-page">
-                {settingsConfig.map((settingsField) => (
-                    <SettingsFieldMenu
-                        key={settingsField.id}
-                        settingsFieldConfig={settingsField}
-                    />
-                ))}
+            {settingsConfig.map((settingsField) => (
+                <SettingsFieldMenu
+                    key={settingsField.id}
+                    settingsFieldConfig={settingsField}
+                />
+            ))}
         </div>
     );
 };

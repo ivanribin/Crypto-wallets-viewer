@@ -1,0 +1,6 @@
+.search-block {
+    display: flex;
+    width: 100%;
+
+    gap: var(--blocks-gap, 30px);
+}
