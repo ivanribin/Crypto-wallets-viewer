@@ -4,11 +4,6 @@ import NavigationBar from "@components/NavigationBar";
 import { type ReactNode, type ReactElement, useState } from "react";
 import "./style.css";
 
-export const enum ContentContainerClasses {
-    VISIBLE = "visible",
-    HIDDEN = "hidden",
-}
-
 export const enum AsideClasses {
     OPEN = "open",
     CLOSE = "close",
@@ -17,6 +12,11 @@ export const enum AsideClasses {
 export const enum AsideHeaderSvgIconsIds {
     BURGER_MENU_CLOSE = "burger-menu-close",
     BURGER_MENU_OPEN = "burger-menu-open",
+}
+
+export const enum ContentContainerClasses {
+    VISIBLE = "visible",
+    HIDDEN = "hidden",
 }
 
 export interface IDefaultLayoutProps {
@@ -39,9 +39,10 @@ const DefaultLayout = ({ children }: IDefaultLayoutProps): ReactElement => {
     const asideHeaderIconId: string = !isAsideOpen
         ? AsideHeaderSvgIconsIds.BURGER_MENU_CLOSE
         : AsideHeaderSvgIconsIds.BURGER_MENU_OPEN;
-    const contentContainerClass: string = !isAsideOpen || !isBurgerNavigation
-        ? ContentContainerClasses.VISIBLE
-        : ContentContainerClasses.HIDDEN;
+    const contentContainerClass: string =
+        !isAsideOpen || !isBurgerNavigation
+            ? ContentContainerClasses.VISIBLE
+            : ContentContainerClasses.HIDDEN;
 
     const changeAsideVisible = (): void => {
         setIsAsideOpen(!isAsideOpen);
@@ -63,9 +64,11 @@ const DefaultLayout = ({ children }: IDefaultLayoutProps): ReactElement => {
                         iconId={asideHeaderIconId}
                         onClick={changeAsideVisible}
                     />
-                    <div className="aside-content">
-                        <NavigationBar flexDirection="column" />
-                    </div>
+                    {isAsideOpen && (
+                        <div className="aside-content">
+                            <NavigationBar flexDirection="column" />
+                        </div>
+                    )}
                 </aside>
             )}
             <div

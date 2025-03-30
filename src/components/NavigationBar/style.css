@@ -12,7 +12,7 @@
 }
 
 .navigation-bar .items-list .item {
-    width: var(--navigation-item-width, 100px);
+    width: 100%;
     user-select: none;
 
     padding: 10px;
