@@ -1,7 +1,7 @@
 import LocalStorageService from "@services/LocalStorageService";
 import { createSlice, type Slice } from "@reduxjs/toolkit";
 import { DEFAULT_THEME_NAME } from "@styles/theme";
-import { CountsLoadPostsKeys, CardanoStatesKeys, settingsFieldsIdList, LocalStorageKeys, type IApplicationSliceState } from "./meta";
+import { DEFAULT_LOAD_POSTS_COUNT, DEFAULT_CARDANO_STATUS, settingsFieldsIdList, LocalStorageKeys, type IApplicationSliceState } from "./meta";
 import { DEFAULT_FONT_FAMILY } from "@styles/fontFamilies";
 import { DEFAULT_FONT_SIZE } from "@styles/fontSizes";
 import { SettingsConfigKeys } from "@services/SettingsService/meta";
@@ -10,8 +10,8 @@ const defaultState: IApplicationSliceState = {
     theme: DEFAULT_THEME_NAME,
     fontFamily: DEFAULT_FONT_FAMILY,
     fontSize: DEFAULT_FONT_SIZE,
-    loadPostsCount: CountsLoadPostsKeys.FEW,
-    isCardanoActive: CardanoStatesKeys.INACTIVE,
+    loadPostsCount: DEFAULT_LOAD_POSTS_COUNT,
+    isCardanoActive: DEFAULT_CARDANO_STATUS,
     isLoading: false,
 };
 
@@ -67,6 +67,19 @@ const ApplicationSlice: Slice<IApplicationSliceState> = createSlice({
             state.isCardanoActive = newCardanoStatus;
             LocalStorageService.setLocalStorageRecord(SettingsConfigKeys.IS_CARDANO_ACTIVE, newCardanoStatus);
         },
+        resetSettings: (state) => {
+            state.theme = DEFAULT_THEME_NAME;
+            state.fontFamily = DEFAULT_FONT_FAMILY;
+            state.fontSize = DEFAULT_FONT_SIZE;
+            state.loadPostsCount = DEFAULT_LOAD_POSTS_COUNT;
+            state.isCardanoActive = DEFAULT_CARDANO_STATUS;
+
+            LocalStorageService.setLocalStorageRecord(SettingsConfigKeys.THEME, DEFAULT_THEME_NAME);
+            LocalStorageService.setLocalStorageRecord(SettingsConfigKeys.FONT_FAMILY, DEFAULT_FONT_FAMILY);
+            LocalStorageService.setLocalStorageRecord(SettingsConfigKeys.FONT_SIZE, DEFAULT_FONT_SIZE);
+            LocalStorageService.setLocalStorageRecord(SettingsConfigKeys.LOAD_POSTS_COUNT, DEFAULT_LOAD_POSTS_COUNT)
+            LocalStorageService.setLocalStorageRecord(SettingsConfigKeys.IS_CARDANO_ACTIVE, DEFAULT_CARDANO_STATUS);
+        },
         setIsLoading: (state, action) => {
             const newIsLoading = action.payload;
 
@@ -76,7 +89,7 @@ const ApplicationSlice: Slice<IApplicationSliceState> = createSlice({
     },
 });
 
-export const { setTheme, setFontFamily, setFontSize, setLoadPostsCount, setIsCardanoActive, setIsLoading } = ApplicationSlice.actions;
+export const { setTheme, setFontFamily, setFontSize, setLoadPostsCount, setIsCardanoActive, resetSettings, setIsLoading } = ApplicationSlice.actions;
 
 export default ApplicationSlice.reducer;
 

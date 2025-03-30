@@ -29,6 +29,8 @@ export const countsLoadPostsValuesMap: { [key in CountsLoadPostsKeys]: TCountLoa
     "large": 15,
 };
 
+export const DEFAULT_LOAD_POSTS_COUNT = CountsLoadPostsKeys.FEW;
+
 export enum CardanoStatesKeys {
     ACTIVE = "active",
     INACTIVE = "inactive",
@@ -45,6 +47,8 @@ export const cardanoStatesValuesMap: { [key in CardanoStatesKeys]: TCardanoState
     "active": true,
     "inactive": false,
 };
+
+export const DEFAULT_CARDANO_STATUS = CardanoStatesKeys.INACTIVE;
 
 export enum LocalStorageKeys {
     THEME = "theme",

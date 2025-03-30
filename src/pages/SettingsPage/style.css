@@ -1,6 +1,21 @@
 .settings-page {
     max-width: var(--page-width, 800px);
 
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: end;
+    gap: var(--blocks-gap, 30px);
+
+    padding-top: var(--content-padding, 16px);
+}
+
+.settings-page .settings {
+    position: relative;
+
+    max-width: var(--page-width, 800px);
 
     margin: auto;
 
