@@ -1,9 +1,13 @@
 import useNavigation from "@hooks/useNavigation";
 import { useNavigate } from "react-router";
-import { NavigationItemClasses } from "@components/NavigationItems";
 import { type ReactElement } from "react";
 import { type INavigationItem } from "@hooks/useNavigation/meta";
 import "./style.css";
+
+export const enum NavigationItemClasses {
+    ACTIVE = "active",
+    INACTIVE = "inactive",
+}
 
 export interface INavigationBarProps {
     flexDirection: string;
