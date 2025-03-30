@@ -22,6 +22,7 @@
     --aside-width: 200px;
     --aside-translate: -150px;
     --page-width: 800px;
+    --navigation-item-width: 150px;
 
     --transition-time: .3s;
 }
@@ -84,7 +85,8 @@ input {
 .application-container.light a,
 .application-container.light h1,
 .application-container.light h2,
-.application-container.light h3 {
+.application-container.light h3,
+.application-container.light .navigation-bar .items-list .item.active {
     color: var(--dryad-bark-color);
     background-color: var(--errigal-white-color);
 }
@@ -133,7 +135,8 @@ input {
 .application-container.dark,
 .application-container.dark a,
 .application-container.dark h1,
-.application-container.dark h3 {
+.application-container.dark h3,
+.application-container.dark .navigation-bar .items-list .item.active {
     color: var(--white-color);
     background-color: var(--aswad-black-color);
 }
@@ -178,7 +181,8 @@ input {
 .application-container.purple,
 .application-container.purple a,
 .application-container.purple h1,
-.application-container.purple h3 {
+.application-container.purple h3,
+.application-container.purple .navigation-bar .items-list .item.active {
     color: var(--white-color);
     background-color: var(--dark-violet-color);
 }
