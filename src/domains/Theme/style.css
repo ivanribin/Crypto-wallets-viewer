@@ -14,7 +14,7 @@
     --dark-violet-color: #251531;
     --light-violet-color: #c767ed;
     --medium-violet-color: #8e44ad;
-    --soft-violet-color: #5c366d;
+    --soft-violet-color: #845b97;
 
     --navbar-height: 75px;
     --content-padding: 30px;
@@ -90,7 +90,9 @@ input {
 }
 
 .application-container.light aside,
-.application-container.light header {
+.application-container.light header,
+.application-container.light div.info,
+.application-container.light div.info h2 {
     background-color: var(--gainsboro-color);
 }
 
@@ -137,7 +139,9 @@ input {
 }
 
 .application-container.dark aside,
-.application-container.dark header {
+.application-container.dark header,
+.application-container.dark div.info,
+.application-container.dark div.info h2 {
     background-color: var(--astrogranite-debris-color);
 }
 
@@ -180,8 +184,10 @@ input {
 }
 
 .application-container.purple aside,
-.application-container.purple header {
-    background-color: var(--light-violet-color);
+.application-container.purple header,
+.application-container.purple div.info,
+.application-container.purple div.info h2 {
+    background-color: var(--soft-violet-color);
 }
 
 .application-container.purple div.info {
