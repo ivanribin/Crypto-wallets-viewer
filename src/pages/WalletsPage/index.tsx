@@ -6,7 +6,7 @@ import { cardanoWalletChapterTexts, ethereumWalletChapterTexts } from "./meta";
 import {
     CardanoStatesKeys,
     cardanoStatesValuesMap,
-} from "../../store/slices/Application/meta";
+} from "@store/slices/Application/meta";
 import { type ReactElement } from "react";
 import { type TRootState } from "@store/index";
 import "./style.css";

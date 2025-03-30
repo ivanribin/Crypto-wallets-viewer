@@ -47,6 +47,7 @@ aside.open {
 
 .content-container.hidden {
     user-select: none;
+
     filter: blur(2px);
 }
 

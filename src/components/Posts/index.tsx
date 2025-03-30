@@ -1,4 +1,4 @@
-import Post from "../Post";
+import Post from "@components/Post";
 import { type ReactElement } from "react";
 import { type TPosts } from "./meta";
 import "./style.css";

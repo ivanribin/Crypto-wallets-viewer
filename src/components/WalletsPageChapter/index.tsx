@@ -1,4 +1,4 @@
-import ConnectedWalletControl from "../ConnectedWalletControl";
+import ConnectedWalletControl from "@components/ConnectedWalletControl";
 import {
     ConnectedWalletMessages,
     ConnectedWalletTexts,
