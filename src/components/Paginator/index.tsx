@@ -1,5 +1,6 @@
 import PaginatorItem from "@components/PaginatorItem";
 import usePagination from "@hooks/usePagination";
+import useWindowResizeObserver from "@hooks/WindowResizeObserver";
 import { Dispatch, SetStateAction, type ReactElement } from "react";
 import { PaginatorFieldsTexts } from "@utils/constants";
 import "./style.css";
@@ -10,6 +11,8 @@ export interface IPaginatorProps {
     changePageNumber: Dispatch<SetStateAction<number>>;
 }
 
+const PAGINATOR_ITEMS_VISIBLE_MINIMUM_WINDOW_WIDTH: number = 1000;
+
 const Paginator = ({
     currentNumber,
     totalPageNumber,
@@ -19,6 +22,10 @@ const Paginator = ({
         currentNumber,
         totalPageNumber
     );
+    const { windowWidth } = useWindowResizeObserver();
+
+    const isMobileDevice: boolean =
+        windowWidth < PAGINATOR_ITEMS_VISIBLE_MINIMUM_WINDOW_WIDTH;
 
     const setPreviousPage = (): void => {
         const currentPageNumber = currentNumber;
@@ -42,33 +49,37 @@ const Paginator = ({
 
     return (
         <div className="paginator">
-                <button
-                    className="arrow paginator-button"
-                    title={PaginatorFieldsTexts.PREVIOUS_PAGE_SYMBOL}
-                    onClick={setPreviousPage}
-                    disabled={buttonsDisable.previousPage}
-                >
-                    {PaginatorFieldsTexts.PREVIOUS_PAGE_SYMBOL}
-                </button>
+            <button
+                className="arrow paginator-button"
+                title={PaginatorFieldsTexts.PREVIOUS_PAGE_SYMBOL}
+                onClick={setPreviousPage}
+                disabled={buttonsDisable.previousPage}
+            >
+                {PaginatorFieldsTexts.PREVIOUS_PAGE_SYMBOL}
+            </button>
 
-            <div className="items-container">
-                {paginatorItemsList.map((itemData, index) => (
-                    <PaginatorItem
-                        key={index}
-                        data={itemData}
-                        onClick={() => changePageNumber(Number(itemData.info))}
-                    />
-                ))}
-            </div>
+            {!isMobileDevice && (
+                <div className="items-container">
+                    {paginatorItemsList.map((itemData, index) => (
+                        <PaginatorItem
+                            key={index}
+                            data={itemData}
+                            onClick={() =>
+                                changePageNumber(Number(itemData.info))
+                            }
+                        />
+                    ))}
+                </div>
+            )}
 
-                <button
-                    className="arrow paginator-button"
-                    title={PaginatorFieldsTexts.NEXT_PAGE_SYMBOl}
-                    onClick={setNextPage}
-                    disabled={buttonsDisable.nextPage}
-                >
-                    {PaginatorFieldsTexts.NEXT_PAGE_SYMBOl}
-                </button>
+            <button
+                className="arrow paginator-button"
+                title={PaginatorFieldsTexts.NEXT_PAGE_SYMBOl}
+                onClick={setNextPage}
+                disabled={buttonsDisable.nextPage}
+            >
+                {PaginatorFieldsTexts.NEXT_PAGE_SYMBOl}
+            </button>
         </div>
     );
 };
