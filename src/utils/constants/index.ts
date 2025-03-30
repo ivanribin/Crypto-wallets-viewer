@@ -20,6 +20,12 @@ export const enum PaginatorButtonSelectClasses {
     UNSELECT = "unselect",
 }
 
+export const enum SvgSpriteIconIds {
+    BURGER_MENU_CLOSE = "burger-menu-close",
+    BURGER_MENU_OPEN = "burger-menu-open",
+    ERROR_NOT_FOUND_PAGE = "not-found-page-error",
+}
+
 export const DEFAULT_PAGE_NUMBER: number = 1;
 
 export const PAGINATOR_SIBLING_COUNT: number = 1;

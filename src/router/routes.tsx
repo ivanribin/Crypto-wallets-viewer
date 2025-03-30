@@ -1,6 +1,7 @@
 import WalletsPage from "@pages/WalletsPage";
 import PostsPage from "@pages/PostsPage";
 import SettingsPage from "@pages/SettingsPage";
+import NotFoundPage from "@pages/NotFoundPage";
 import { RouteObject } from "react-router";
 
 export enum PathsTitles {
@@ -49,8 +50,8 @@ const routes: RouteObject[] = [
     },
     {
         ...paths.NOT_FOUND,
-        element: <></>,
-    }
+        element: <NotFoundPage />,
+    },
 ];
 
 export default routes;
