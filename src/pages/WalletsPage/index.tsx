@@ -18,13 +18,13 @@ const WalletsPage = (): ReactElement => {
     const isCardanoActive = cardanoStatesValuesMap[isCardanoActiveKey];
 
     const {
-        ethereumAccountAddress,
-        setEthereumAccountAddress,
+        ethereumAccountData,
+        clearEthereumAccountData,
         connectEthereumWallet,
     } = useEthereumHook();
     const {
-        cardanoMaskAccountAddress,
-        setCardanoMaskAccountAddress,
+        cardanoAccountData,
+        clearCardanoAccountData,
         connectCardanoWallet,
     } = useCardanoHook();
 
@@ -33,16 +33,16 @@ const WalletsPage = (): ReactElement => {
             <WalletsPageChapter
                 connectFunction={connectEthereumWallet}
                 textData={ethereumWalletChapterTexts}
-                activeWalletAddress={ethereumAccountAddress}
-                changeWalletAddress={setEthereumAccountAddress}
+                walletData={ethereumAccountData}
+                clearWalletData={clearEthereumAccountData}
             />
 
             {isCardanoActive && (
                 <WalletsPageChapter
                     connectFunction={connectCardanoWallet}
                     textData={cardanoWalletChapterTexts}
-                    activeWalletAddress={cardanoMaskAccountAddress}
-                    changeWalletAddress={setCardanoMaskAccountAddress}
+                    walletData={cardanoAccountData}
+                    clearWalletData={clearCardanoAccountData}
                 />
             )}
         </div>
