@@ -1,0 +1,14 @@
+Fixes:
+1) All components need make that, what its named and should do.
+2) Components don't need get value by localstorage id. Set in localstorage class names, because don't do getting value by id.
+3) Default imports from short to long, destructuring from long to short.
+4) All Navigation in DefaultLayout in other component Navigation, layout just give props isMobile. 
+5) NavigationBar component renamed NavigationItems and don't give props flexDirection, parent component in css set flexDirection.
+6) Set background in html most parent container (when screen width very short, part of most parent container isn't filled background color).
+7) Clear package.json that libraries, which don't use.
+8) RENAME VARIABLES, WHICH NEED THEM.
+9) Add eslint formatting
+10) In crypto wallets hooks get window methods by destructuring and check by if construction that this methods object is exist.
+11) web manifest in assets root.
+12) Don't use library for encoded cardano address. Create encoding function without library, because library very data weight.
+13) Add some words for example "cardano" to Code Spell Checker by json file.
